@@ -14,7 +14,7 @@ Keep all forecasts informational. Odds, betting markets, and exchange prices are
 | Market baseline | 15% | Polymarket, Stake, books, liquidity, line movement |
 | Group/context/environment | 15% | standings, draw value, path incentives, host boost, heat, travel |
 
-Raise player availability above 25% when a team depends on one or two key roles: a build-up organizer, main ball progressor, primary chance creator, defensive organizer, goalkeeper, set-piece specialist, or main finisher. Use named players only as verified, tournament-specific examples; do not treat them as permanent rules.
+Raise player availability above 25% when a team depends on one or two key roles: a build-up organizer, main ball progressor, primary chance creator, defensive organizer, goalkeeper, set-piece specialist, or main finisher. Use named players only as verified, tournament-specific examples; do not treat them as permanent rules. Availability means role fitness, expected minutes, and replacement quality, not just whether the player appears in the squad.
 
 ## Source Tiers
 
@@ -42,7 +42,7 @@ Mark uncertain facts clearly: confirmed, reported, inferred, or user-supplied.
 
 ## Data Reading
 
-Prefer tournament data over friendlies. For the previous match, ask:
+Prefer tournament data over friendlies, but still inspect the recent five friendlies/pre-tournament matches when available. Use them for role continuity, minutes, opponent quality, and player state; use current tournament data for the stronger read on actual chance quality. For the previous match, ask:
 
 - Was the score supported by xG and big chances?
 - Did a goalkeeper produce an outlier performance?
@@ -55,6 +55,15 @@ Pattern examples:
 - A 0-0 with high shot volume and many goalkeeper saves can show real pressure, but finishing variance or a goalkeeper outlier may break market expectation.
 - A possession-dominant 0-1 loss does not prove poor team quality by itself; inspect whether possession became high-quality chances.
 - A reputation-heavy favorite can underperform when the actual team sheet removes key chance creation, progression, defensive control, or finishing roles.
+
+## Calibration Discipline
+
+- Carry forward explicit lessons from recent post-match reviews before making a new forecast.
+- After a run of draws, raise draw awareness but do not apply blanket draw protection.
+- After noticing overconservatism, do not swing back to paper-strength favorites without rechecking key role fitness, starters, and recent chance quality.
+- Strong teams with healthy elite creators/finishers should not be flattened into default draws by climate or opening-round caution alone.
+- Structural or role gaps should usually cap margin first, then raise draw risk; they should not automatically flip the match to an upset.
+- If final lineups are unavailable, label the forecast provisional and name the specific lineup triggers that would move the score or winner lean.
 
 ## Style Matchup Diagnostics
 
@@ -102,6 +111,7 @@ Separate confidence in result from confidence in exact score. Exact score is usu
 
 **A vs B**
 Sources used: Polymarket public page or Stake public odds page; team news report; style-matchup notes. Data layer unavailable.
+Calibration: Prior review showed overcorrecting to draws is risky, but this remains provisional because final lineups are unavailable.
 Prediction: A 1-0; backup 1-1.
 Why: [market], [data], [availability], [style matchup].
 Failure mode: A cannot turn possession into box chances, or B scores first from transition/set piece.
@@ -123,6 +133,7 @@ What was wrong:
 
 Model update:
 - Increase/decrease weight for ...
+- Note whether this was a paper-strength error, over-draw-protection error, lineup/fitness miss, market miss, or finishing-variance miss.
 ```
 
 Review against process and chance quality, not only score. If a prediction loses to an extreme goalkeeper performance or red card, record it differently from a wrong style-matchup read.
