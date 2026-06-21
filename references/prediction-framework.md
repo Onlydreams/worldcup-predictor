@@ -1,0 +1,128 @@
+# Prediction Framework
+
+## Evidence Weighting
+
+Use these weights as a guide, then explain deviations.
+
+Keep all forecasts informational. Odds, betting markets, and exchange prices are analysis inputs only; never frame a prediction as guaranteed, betting advice, financial advice, or an instruction to wager.
+
+| Dimension | Weight | What to inspect |
+|---|---:|---|
+| Team/style matchup | 25% | chance creation, chance prevention, press resistance, transition defense, set pieces |
+| Player availability/state | 25% | starters, injuries, suspensions, illness, role fitness, ratings |
+| Current data | 20% | xG, big chances, shots on target, saves, chance locations, momentum |
+| Market baseline | 15% | Polymarket, Stake, books, liquidity, line movement |
+| Group/context/environment | 15% | standings, draw value, path incentives, host boost, heat, travel |
+
+Raise player availability above 25% when a team depends on one or two key roles: a build-up organizer, main ball progressor, primary chance creator, defensive organizer, goalkeeper, set-piece specialist, or main finisher. Use named players only as verified, tournament-specific examples; do not treat them as permanent rules.
+
+## Source Tiers
+
+| Tier | Sources | Use |
+|---|---|---|
+| A | official lineups, FIFA match centre, federation injury updates | facts and availability |
+| B | Sofascore/FotMob/FBref/Opta-style data | performance and chance quality |
+| C | Polymarket public pages, Stake public odds pages, major books | market baseline and consensus |
+| D | Guardian/BBC/ESPN/local beat reports | narrative, context, quotes, style and matchup hints |
+| E | social clips/forums | hypothesis only; verify elsewhere |
+
+Mark uncertain facts clearly: confirmed, reported, inferred, or user-supplied.
+
+## Market Reading
+
+- Prefer public web pages for market baselines: Polymarket event/market pages, Stake public odds pages, and major books. Use screenshots only when live page access is unavailable.
+- For Polymarket public pages, read visible market text first: moneyline, draw, spreads, totals, BTTS, first-team-to-score, displayed volume, and any visible probability/cent price. Clean duplicated or concatenated page text before using it.
+- Do not claim Polymarket orderbook depth, bid/ask spread, midpoint, or token-level detail unless an API/orderbook source was actually read. Public page text is enough for baseline probability, not precise execution quality.
+- Convert odds/prices into rough probabilities, but avoid false precision when using screenshots or noisy page text.
+- Compare 1X2 with handicap and totals.
+- Favorite with weak handicap support often means small win, not blowout.
+- Heavy favorite plus deep handicap support plus group net-goal incentive supports multi-goal predictions.
+- Low total with strong favorite supports 1-0 or 2-0 rather than 3-1.
+- Polymarket low liquidity, low volume, stale visible prices, or very wide spread should be weak reference only.
+
+## Data Reading
+
+Prefer tournament data over friendlies. For the previous match, ask:
+
+- Was the score supported by xG and big chances?
+- Did a goalkeeper produce an outlier performance?
+- Were red cards, early goals, penalties, or game-plan collapses decisive?
+- Did the team create box entries and high-quality shots, or only low-value volume?
+- Which players had high ratings for repeatable actions: saves, key passes, duels, progressive carries, defensive actions?
+
+Pattern examples:
+
+- A 0-0 with high shot volume and many goalkeeper saves can show real pressure, but finishing variance or a goalkeeper outlier may break market expectation.
+- A possession-dominant 0-1 loss does not prove poor team quality by itself; inspect whether possession became high-quality chances.
+- A reputation-heavy favorite can underperform when the actual team sheet removes key chance creation, progression, defensive control, or finishing roles.
+
+## Style Matchup Diagnostics
+
+Do not force every team into a preferred formation, build-up shape, or possession model. Evaluate whether the team's actual approach creates and prevents high-quality chances.
+
+### Positive indicators
+
+- The team creates repeatable high-quality chances, not just territory or shot volume.
+- Ball progression remains functional under pressure.
+- Defensive spacing limits the opponent's best chance creation route.
+- Set pieces, transitions, wide play, central combinations, or direct play fit the available players.
+- Game state changes do not immediately remove the team's main route to goal.
+
+### Warning indicators
+
+- Possession or pressure produces few clear chances.
+- Key creators occupy the same zones and reduce each other's influence.
+- Injuries or role changes remove the team's main progression, creation, or finishing route.
+- Aggressive attacking choices leave repeated high-value counterattacks.
+- The team needs to chase but lacks tools to create better chances.
+
+## Group Incentives
+
+- Team on 3 points may accept draw if it nearly secures qualification.
+- Team on 1 point against weak opponent may chase net goal difference.
+- Team on 0 points in match two usually cannot accept a draw, but may still lack tools to chase.
+- Path incentives matter only if teams can realistically control placement; do not overweight speculative bracket choices early.
+
+## Confidence Labels
+
+| Confidence | Use when |
+|---|---|
+| High | market, data, personnel, and motivation align; low missing-data risk |
+| Medium | favorite clear but one key uncertainty exists |
+| Low | signals conflict, key lineups unknown, or team styles create high variance |
+
+Separate confidence in result from confidence in exact score. Exact score is usually lower confidence.
+
+## Standard Answer Template
+
+```markdown
+| Match | Sources used | Market | Data/personnel correction | Prediction | Confidence |
+|---|---|---|---|---|---|
+| A vs B | Market, news, matchup | A small favorite | B has strong low block; A missing creator | A 1-0 | Medium |
+
+**A vs B**
+Sources used: Polymarket public page or Stake public odds page; team news report; style-matchup notes. Data layer unavailable.
+Prediction: A 1-0; backup 1-1.
+Why: [market], [data], [availability], [style matchup].
+Failure mode: A cannot turn possession into box chances, or B scores first from transition/set piece.
+Missing data: Sofascore unavailable / lineup not confirmed / weather not checked.
+Disclaimer: Informational football analysis only; not betting or financial advice.
+```
+
+## Post-Match Review Template
+
+```markdown
+| Match | Prediction | Result | Verdict |
+|---|---:|---:|---|
+
+What was right:
+- ...
+
+What was wrong:
+- ...
+
+Model update:
+- Increase/decrease weight for ...
+```
+
+Review against process and chance quality, not only score. If a prediction loses to an extreme goalkeeper performance or red card, record it differently from a wrong style-matchup read.
