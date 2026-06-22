@@ -21,12 +21,16 @@ Raise player availability above 25% when a team depends on one or two key roles:
 | Tier | Sources | Use |
 |---|---|---|
 | A | official lineups, FIFA match centre, federation injury updates | facts and availability |
-| B | Sofascore/FotMob/FBref/Opta-style data | performance and chance quality |
+| B1 | Sofascore, FotMob, Flashscore, FIFA match centre stats, user-supplied screenshots from these sources | immediate performance, lineups, player ratings, saves, big chances, shot xG when visible |
+| B2 | WhoScored, Sofascore event maps, shot maps, heatmaps, Opta-style event data | event-level and tactical diagnosis when directly readable |
+| B3 | FBref, StatsBomb free data, Understat | delayed review, historical validation, model calibration, and deep context rather than live matchday reads |
 | C | Polymarket public pages, Stake public odds pages, major books | market baseline and consensus |
 | D | Guardian/BBC/ESPN/local beat reports | narrative, context, quotes, style and matchup hints |
 | E | social clips/forums | hypothesis only; verify elsewhere |
 
 Mark uncertain facts clearly: confirmed, reported, inferred, or user-supplied.
+
+Access discipline matters as much as source quality. If a site returns 403, requires heavy JavaScript, blocks automated access, or only appears through a user screenshot, say exactly that. Do not promote a source into "used" unless the relevant match page, API output, or screenshot was actually read.
 
 ## Market Reading
 
@@ -42,7 +46,21 @@ Mark uncertain facts clearly: confirmed, reported, inferred, or user-supplied.
 
 ## Data Reading
 
-Prefer tournament data over friendlies, but still inspect the recent five friendlies/pre-tournament matches when available. Use them for role continuity, minutes, opponent quality, and player state; use current tournament data for the stronger read on actual chance quality. For the previous match, ask:
+Prefer tournament data over friendlies, but still inspect the recent five friendlies/pre-tournament matches when available. Use them for role continuity, minutes, opponent quality, and player state; use current tournament data for the stronger read on actual chance quality.
+
+Immediate performance sources:
+
+- Use FotMob, Sofascore, Flashscore, FIFA match centre, or user screenshots for live scores, lineups, substitutions, shots, shots on target, big chances, saves, ratings, and visible xG.
+- Use Sofascore shot xG, player ratings, heatmaps, and event views when available; they are especially useful for distinguishing real pressure from low-value shot volume.
+- Use WhoScored or Opta-style event data for tactical questions such as ball progression, repeated turnovers, zone occupation, and whether a midfield disconnect is structural.
+
+Delayed review sources:
+
+- Use FBref for next-day or later validation of aggregate and advanced stats. Do not treat it as a real-time source.
+- Use StatsBomb free data for historical learning, event-data practice, and model calibration; do not assume current World Cup coverage.
+- Use Understat as an xG reference mainly for covered club competitions; verify coverage before using it for national-team matches.
+
+For the previous match, ask:
 
 - Was the score supported by xG and big chances?
 - Did a goalkeeper produce an outlier performance?
@@ -55,12 +73,16 @@ Pattern examples:
 - A 0-0 with high shot volume and many goalkeeper saves can show real pressure, but finishing variance or a goalkeeper outlier may break market expectation.
 - A possession-dominant 0-1 loss does not prove poor team quality by itself; inspect whether possession became high-quality chances.
 - A reputation-heavy favorite can underperform when the actual team sheet removes key chance creation, progression, defensive control, or finishing roles.
+- A favorite with consecutive low-efficiency attacking games should not be treated as due for automatic rebound. Upgrade only if the lineup, roles, or previous-match chance quality show a real route to repair.
+- An underdog that creates repeatable scoring routes across matches should be upgraded from "can frustrate" to "has a stable goal path." Track set pieces, direct play, crosses to a target forward, transition carries, long shots, and second balls.
 
 ## Calibration Discipline
 
 - Carry forward explicit lessons from recent post-match reviews before making a new forecast.
 - After a run of draws, raise draw awareness but do not apply blanket draw protection.
 - After noticing overconservatism, do not swing back to paper-strength favorites without rechecking key role fitness, starters, and recent chance quality.
+- After a favored team has failed to score from open play or produced repeated low-quality volume, cap its margin and raise draw risk until there is concrete evidence of chance-creation repair.
+- After a smaller team shows real scoring routes in consecutive tournament matches, give that route independent weight even if market price, reputation, or possession profile still favors the opponent.
 - Strong teams with healthy elite creators/finishers should not be flattened into default draws by climate or opening-round caution alone.
 - Structural or role gaps should usually cap margin first, then raise draw risk; they should not automatically flip the match to an upset.
 - If final lineups are unavailable, label the forecast provisional and name the specific lineup triggers that would move the score or winner lean.
