@@ -12,7 +12,7 @@ Keep all forecasts informational. Odds, betting markets, and exchange prices are
 | Player availability/state | 25% | starters, injuries, suspensions, illness, role fitness, ratings |
 | Current data | 20% | xG, big chances, shots on target, saves, chance locations, momentum |
 | Market baseline | 15% | Polymarket, Stake, books, liquidity, line movement |
-| Group/context/environment | 15% | standings, draw value, path incentives, host boost, heat, travel |
+| Group/context/environment | 15% | standings, draw value, path incentives, host boost, heat, travel, governance and continuity signals |
 
 Raise player availability above 25% when a team depends on one or two key roles: a build-up organizer, main ball progressor, primary chance creator, defensive organizer, goalkeeper, set-piece specialist, or main finisher. Use named players only as verified, tournament-specific examples; do not treat them as permanent rules. Availability means role fitness, expected minutes, and replacement quality, not just whether the player appears in the squad.
 
@@ -85,6 +85,7 @@ Pattern examples:
 - After a smaller team shows real scoring routes in consecutive tournament matches, give that route independent weight even if market price, reputation, or possession profile still favors the opponent.
 - Strong teams with healthy elite creators/finishers should not be flattened into default draws by climate or opening-round caution alone.
 - Structural or role gaps should usually cap margin first, then raise draw risk; they should not automatically flip the match to an upset.
+- Public criticism from core players about rushed federation rebuilds, leaks, squad discontinuity, or instability is a high-weight cohesion signal, not ordinary post-match venting. Downgrade team cohesion, tactical continuity, defensive coordination, and late-game resilience. Keep unverified corruption, payment, or internal-politics claims separate until sourced.
 - If final lineups are unavailable, label the forecast provisional and name the specific lineup triggers that would move the score or winner lean.
 
 ## Style Matchup Diagnostics
@@ -104,6 +105,7 @@ Do not force every team into a preferred formation, build-up shape, or possessio
 - Possession or pressure produces few clear chances.
 - Key creators occupy the same zones and reduce each other's influence.
 - Injuries or role changes remove the team's main progression, creation, or finishing route.
+- Recent coaching change, abrupt youth rebuild, public leaks, or player-confirmed lack of shared playing time undermines coordinated pressing, defensive spacing, set-piece assignments, and late-game resilience.
 - Aggressive attacking choices leave repeated high-value counterattacks.
 - The team needs to chase but lacks tools to create better chances.
 
