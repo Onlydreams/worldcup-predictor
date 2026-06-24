@@ -35,7 +35,13 @@ Access discipline matters as much as source quality. If a site returns 403, requ
 ## Market Reading
 
 - Prefer public web pages for market baselines: Polymarket event/market pages, Stake public odds pages, and major books. Use screenshots only when live page access is unavailable.
+- For World Cup fixtures, start from dedicated aggregation pages before generic search:
+  - Polymarket World Cup games: `https://polymarket.com/zh/sports/world-cup/games`
+  - Stake soccer / visible World Cup listings: `https://stake.com/zh/sports/soccer`
+  If locale-specific paths fail, try the same product area in another locale before declaring the market layer unavailable.
+- Do not treat a failed generic search, a team-name-only Polymarket Gamma API search, or an unrelated API result as proof that odds do not exist. The public sport/game aggregation page can expose fixtures that API search misses.
 - For Polymarket public pages, read visible market text first: moneyline, draw, spreads, totals, BTTS, first-team-to-score, displayed volume, and any visible probability/cent price. Clean duplicated or concatenated page text before using it.
+- For Stake public pages, separate normal 1X2 decimal odds from signup offers, free bets, odds boosts, and acquisition promos. Promotional prices are not a market baseline.
 - Do not claim Polymarket orderbook depth, bid/ask spread, midpoint, or token-level detail unless an API/orderbook source was actually read. Public page text is enough for baseline probability, not precise execution quality.
 - Convert odds/prices into rough probabilities, but avoid false precision when using screenshots or noisy page text.
 - Compare 1X2 with handicap and totals.

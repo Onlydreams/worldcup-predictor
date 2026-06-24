@@ -27,11 +27,21 @@ Before forecasting, state which source layers were actually used:
 
 If a layer is missing, say so and reduce confidence. Never claim Sofascore, FotMob, Flashscore, WhoScored, FBref, Stake, Polymarket, or lineup data was used unless it was directly read from a public page/API or supplied by the user. Treat FBref as a delayed review and validation source, not a real-time matchday source, unless current-match data is verified.
 
+## Market Lookup Defaults
+
+For World Cup match odds, check dedicated market pages before generic search:
+
+1. Open the Polymarket World Cup games page, such as `https://polymarket.com/zh/sports/world-cup/games`, and read visible moneyline/draw prices for the relevant fixtures.
+2. Open the Stake soccer page, such as `https://stake.com/zh/sports/soccer`, or its visible World Cup/soccer subpages, and read normal 1X2 decimal odds when available.
+3. Use major books or odds aggregators only after these dedicated pages fail or lack the target fixtures.
+
+Do not conclude that market odds are unavailable from generic web search alone. Do not rely on Polymarket Gamma API team-name search as the first pass; it can return unrelated markets or miss sport/game aggregation pages. Ignore signup promos, free-bet boosts, and "50/1" style acquisition offers when setting a normal market baseline.
+
 ## Forecast Workflow
 
 1. **Check calibration state**: if prior post-match reviews or user-cited earlier sessions exist, carry forward the explicit model corrections before forecasting. Do not let a recent draw cluster cause blanket draw protection, and do not overcorrect back to paper favorites while ignoring injuries, starters, or role gaps.
 2. **Identify match state**: date/time, group, standings, qualification incentives, and whether a draw helps either side.
-3. **Set market baseline**: prefer visible prices from Polymarket public market pages, Stake public odds pages, or major books; use screenshots only as fallback. Convert visible prices/odds into rough favorite, draw, and total-goals expectations. Note liquidity, volume, wide spreads, stale pages, or missing markets. Use Polymarket API only when public page text cannot expose the needed market or when orderbook/bid-ask detail is specifically required.
+3. **Set market baseline**: follow the market lookup defaults above, then convert visible prices/odds into rough favorite, draw, and total-goals expectations. Note liquidity, volume, wide spreads, stale pages, missing markets, or pages that only load earlier fixtures. Use Polymarket API only when public page text cannot expose the needed market or when orderbook/bid-ask detail is specifically required.
 4. **Verify recent performance**: prefer last tournament match data over friendlies, but also inspect recent five friendlies/pre-tournament matches when available. For immediate matchday reads, prefer verified Sofascore/FotMob/Flashscore data or user-supplied screenshots; use WhoScored/Sofascore event or shot-level data when available; use FBref, StatsBomb free data, and Understat mainly for delayed review, model calibration, or historical context. Check opponent quality, xG/chance quality, shots on target, big chances, saves, player ratings, minutes, and whether the scoreline was misleading.
 5. **Check player availability**: injuries, suspensions, illness, rotation, expected starters, whether key players are truly fit enough to execute their role for 60-70 minutes, and whether replacements preserve or change the team's main route to goal.
 6. **Analyze style matchup**: test how each team creates chances, prevents chances, handles pressure, progresses the ball, defends transitions, and uses set pieces without forcing a preferred shape or formation.
