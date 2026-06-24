@@ -59,6 +59,8 @@ Immediate performance sources:
 - Use FotMob, Sofascore, Flashscore, FIFA match centre, or user screenshots for live scores, lineups, substitutions, shots, shots on target, big chances, saves, ratings, and visible xG.
 - Use Sofascore shot xG, player ratings, heatmaps, and event views when available; they are especially useful for distinguishing real pressure from low-value shot volume.
 - Use WhoScored or Opta-style event data for tactical questions such as ball progression, repeated turnovers, zone occupation, and whether a midfield disconnect is structural.
+- Do not treat unavailable xG, big chances, shot-quality views, or official lineups as a blocker by itself. For pre-match forecasts, current-fixture xG and big chances do not exist, and official lineups may be unavailable until close to kickoff. Use recent tournament stats, official match-centre basics, credible team news, expected lineup reports, and role/style evidence as fallback.
+- For post-match reviews, try the advanced data sources first. If they are unavailable, still review with the best readable evidence: score timeline, shots, shots on target, possession, cards, substitutions, official match reports, reliable recaps, and market expectation. Mark the missing advanced data and lower confidence in fine-grained chance-quality claims.
 
 Delayed review sources:
 
@@ -84,6 +86,8 @@ Pattern examples:
 
 ## Calibration Discipline
 
+- A complete forecast cannot be market-only or context-only. After a market page has been read, preserve that market baseline and move on to recent performance/data, player availability/news, group/context incentives, and style matchup. Do not re-read the same market source unless the captured price is ambiguous, stale, or incomplete.
+- If Sofascore/FotMob/Flashscore/xG, lineup, or injury data cannot be read, say exactly which layer is missing. Missing advanced event data mostly caps confidence in exact score, margin, and chance-quality claims; missing key availability or lineup facts can cap confidence in the winner lean. Do not silently replace missing data with market prices.
 - Carry forward explicit lessons from recent post-match reviews before making a new forecast.
 - After a run of draws, raise draw awareness but do not apply blanket draw protection.
 - After noticing overconservatism, do not swing back to paper-strength favorites without rechecking key role fitness, starters, and recent chance quality.

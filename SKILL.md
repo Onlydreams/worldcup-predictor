@@ -27,6 +27,10 @@ Before forecasting, state which source layers were actually used:
 
 If a layer is missing, say so and reduce confidence. Never claim Sofascore, FotMob, Flashscore, WhoScored, FBref, Stake, Polymarket, or lineup data was used unless it was directly read from a public page/API or supplied by the user. Treat FBref as a delayed review and validation source, not a real-time matchday source, unless current-match data is verified.
 
+For a full match prediction, do not stop after reading only market odds or only schedule/group context. Before producing the final forecast, make a visible attempt to check market baseline, recent performance/data, player availability/news, group/context incentives, and style matchup.
+
+Treat advanced match data as high value but not always available. In pre-match forecasts, official lineups often appear only close to kickoff, and current-fixture xG or big chances do not exist yet; use recent match data, official match centre stats, credible news, and style/context checks instead. In post-match reviews, prefer xG, big chances, shot quality, and lineups when readable, but if Sofascore/FotMob/Flashscore are unavailable, use FIFA match centre, official reports, reliable recaps, and visible basic stats as fallback. Keep missing layers in the output and reduce confidence in the exact score or fine-grained tactical claim, not necessarily the whole winner lean.
+
 ## Market Lookup Defaults
 
 For World Cup match odds, check dedicated market pages before generic search:
@@ -48,6 +52,8 @@ Do not conclude that market odds are unavailable from generic web search alone. 
 7. **Account for context**: heat/humidity, travel, home/host boost, kickoff time, venue surface, referee/discipline risk, and governance or continuity signals if known. Treat climate as a modifier, not the master variable.
 8. **Produce prediction**: give winner/draw lean, exact score, backup score, confidence, and the single most important failure mode. If odds or betting markets were used, include a brief disclaimer that the analysis is not betting or financial advice.
 9. **Post-match review**: compare prediction with score, xG/chances, ratings, key events, and update the model. Do not overgeneralize from one matchday.
+
+Do not repeat a completed layer while required layers remain unchecked. For example, once market prices have been read, move to data, news, context, and style instead of re-reading the same market page unless the market data is ambiguous or stale.
 
 ## Style Matchup Checks
 
