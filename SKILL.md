@@ -36,10 +36,10 @@ Treat advanced match data as high value but not always available. In pre-match f
 For World Cup match odds, check dedicated market pages before generic search:
 
 1. Open the Polymarket World Cup games page, such as `https://polymarket.com/zh/sports/world-cup/games`, and read visible moneyline/draw prices for the relevant fixtures.
-2. Open the Stake soccer page, such as `https://stake.com/zh/sports/soccer`, or its visible World Cup/soccer subpages, and read normal 1X2 decimal odds when available.
-3. Use major books or odds aggregators only after these dedicated pages fail or lack the target fixtures.
+2. Open the Stake World Cup soccer page directly: `https://stake.com/zh/sports/soccer/international/world-cup`, and read normal 1X2 decimal odds when the fixture is visible.
+3. If Polymarket and Stake both lack readable fixture odds, use major public books, odds aggregators, or user-supplied screenshots as supplemental market input.
 
-Do not conclude that market odds are unavailable from generic web search alone. Do not rely on Polymarket Gamma API team-name search as the first pass; it can return unrelated markets or miss sport/game aggregation pages. Ignore signup promos, free-bet boosts, and "50/1" style acquisition offers when setting a normal market baseline.
+Do not conclude that market odds are unavailable from generic web search alone. Do not rely on Polymarket Gamma API team-name search as the first pass; it can return unrelated markets or miss sport/game aggregation pages. If Stake blocks access, requires heavy JavaScript, redirects away, or shows no normal 1X2 fixture odds, mark Stake unavailable for that match and move on instead of retrying repeatedly. Ignore signup promos, free-bet boosts, and "50/1" style acquisition offers when setting a normal market baseline.
 
 ## Forecast Workflow
 
@@ -96,5 +96,6 @@ Then add short match notes:
 - Do not say a team lacks quality just because it lost; check whether it created real chances.
 - Do not treat climate, opening-round caution, or a cluster of draws as a master variable.
 - Do not swing from "too conservative" straight back to paper-strength favorites when key creators, finishers, defenders, or starters are missing or limited.
+- Do not assume an eliminated team will produce an automatic pride rebound; check player buy-in, lineup intent, coaching stability, and whether governance or cohesion signals are already broken.
 
 For detailed weighting, confidence rules, and review templates, read `references/prediction-framework.md`.

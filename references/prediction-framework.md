@@ -37,11 +37,12 @@ Access discipline matters as much as source quality. If a site returns 403, requ
 - Prefer public web pages for market baselines: Polymarket event/market pages, Stake public odds pages, and major books. Use screenshots only when live page access is unavailable.
 - For World Cup fixtures, start from dedicated aggregation pages before generic search:
   - Polymarket World Cup games: `https://polymarket.com/zh/sports/world-cup/games`
-  - Stake soccer / visible World Cup listings: `https://stake.com/zh/sports/soccer`
-  If locale-specific paths fail, try the same product area in another locale before declaring the market layer unavailable.
+  - Stake World Cup soccer page: `https://stake.com/zh/sports/soccer/international/world-cup`
+  If these dedicated pages do not expose the fixture odds, then use major public books, odds aggregators, or user-supplied screenshots as supplemental market input.
 - Do not treat a failed generic search, a team-name-only Polymarket Gamma API search, or an unrelated API result as proof that odds do not exist. The public sport/game aggregation page can expose fixtures that API search misses.
 - For Polymarket public pages, read visible market text first: moneyline, draw, spreads, totals, BTTS, first-team-to-score, displayed volume, and any visible probability/cent price. Clean duplicated or concatenated page text before using it.
-- For Stake public pages, separate normal 1X2 decimal odds from signup offers, free bets, odds boosts, and acquisition promos. Promotional prices are not a market baseline.
+- For Stake public pages, use the direct World Cup soccer URL first. If it blocks access, requires heavy JavaScript, redirects away, or shows no normal 1X2 fixture odds, record Stake as unavailable for that match and move on. Do not keep retrying Stake, do not infer that the whole market layer is unavailable, and do not invent odds.
+- Separate normal 1X2 decimal odds from signup offers, free bets, odds boosts, and acquisition promos. Promotional prices are not a market baseline.
 - Do not claim Polymarket orderbook depth, bid/ask spread, midpoint, or token-level detail unless an API/orderbook source was actually read. Public page text is enough for baseline probability, not precise execution quality.
 - Convert odds/prices into rough probabilities, but avoid false precision when using screenshots or noisy page text.
 - Compare 1X2 with handicap and totals.
@@ -124,6 +125,7 @@ Do not force every team into a preferred formation, build-up shape, or possessio
 - Team on 3 points may accept draw if it nearly secures qualification.
 - Team on 1 point against weak opponent may chase net goal difference.
 - Team on 0 points in match two usually cannot accept a draw, but may still lack tools to chase.
+- Team already eliminated may either rotate, collapse, or play freer. Do not assume a pride rebound unless lineup intent, player buy-in, coaching stability, and cohesion signals support it.
 - Path incentives matter only if teams can realistically control placement; do not overweight speculative bracket choices early.
 
 ## Confidence Labels
