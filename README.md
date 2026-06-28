@@ -4,14 +4,16 @@ Chinese version: [README_CN.md](README_CN.md)
 
 An agent skill for structured World Cup and international football match analysis.
 
-It guides an AI agent to combine market baseline, verified match data, team news, style matchup, group incentives, and post-match review instead of relying on a single signal such as odds, reputation, or recent scorelines.
+It guides an AI agent to combine market baseline, verified match data, team news, style matchup, match-state incentives, and post-match review instead of relying on a single signal such as odds, reputation, or recent scorelines.
 
 ## What It Does
 
 - Builds match forecasts from layered evidence: market, data, news, context, and style matchup.
 - Requires the agent to state which source layers were actually used.
 - Uses public odds and betting-market pages as baseline inputs, not final answers.
-- Checks player availability, role fitness, style matchup, group incentives, and environmental factors.
+- Checks player availability, role fitness, style matchup, group or knockout match-state incentives, and environmental factors.
+- Supports knockout-specific reads, including 90-minute vs advancement forecasts, extra time, penalties, and bench depth.
+- Supports card and discipline forecasts with referee profile, matchup fouls, game state, and reasonable card-count ranges.
 - Produces compact predictions with score, backup score, confidence, failure mode, and missing-data notes.
 - Supports post-match review to update future predictions.
 
@@ -56,7 +58,7 @@ SKILL.md
 Invoke the skill when asking for World Cup or international football match analysis:
 
 ```text
-Use $worldcup-predictor to analyze Spain vs Portugal using current team news, market baseline, recent match data, style matchup, and group incentives.
+Use $worldcup-predictor to analyze Spain vs Portugal using current team news, market baseline, recent match data, style matchup, and match-state incentives.
 ```
 
 Useful request types include:
@@ -65,6 +67,8 @@ Useful request types include:
 - Exact-score prediction
 - Betting-market comparison as an evidence layer
 - Group qualification scenario
+- Knockout advancement, extra-time, and penalty-shootout scenario
+- Card and discipline forecast
 - Player availability and lineup impact
 - Style matchup analysis
 - Post-match prediction review

@@ -32,6 +32,10 @@ Mark uncertain facts clearly: confirmed, reported, inferred, or user-supplied.
 
 Access discipline matters as much as source quality. If a site returns 403, requires heavy JavaScript, blocks automated access, or only appears through a user screenshot, say exactly that. Do not promote a source into "used" unless the relevant match page, API output, or screenshot was actually read.
 
+Predicted lineups from Sofascore, FotMob, other apps, or user screenshots can inform the pre-match personnel layer, but label them as predicted, not official. After reading a predicted lineup, list the specific lineup triggers that would change the forecast: main finisher starts or sits, defensive organizer returns, ball-progressor fitness, goalkeeper change, or whether a key player is fit for 60-70 minutes.
+
+Screenshots are fallback or supplemental evidence, not a hard gate. Do not ask for or wait on screenshots if public pages, credible reports, or enough other source layers support a forecast. If a screenshot would improve a specific claim, mark that claim provisional or missing and continue with lower confidence.
+
 ## Market Reading
 
 - Prefer public web pages for market baselines: Polymarket event/market pages, Stake public odds pages, and major books. Use screenshots only when live page access is unavailable.
@@ -58,7 +62,7 @@ Prefer tournament data over friendlies, but still inspect the recent five friend
 
 Immediate performance sources:
 
-- Use FotMob, Sofascore, Flashscore, FIFA match centre, or user screenshots for live scores, lineups, substitutions, shots, shots on target, big chances, saves, ratings, and visible xG.
+- Use FotMob, Sofascore, Flashscore, FIFA match centre, or user screenshots for live scores, lineups, substitutions, shots, shots on target, big chances, saves, ratings, and visible xG. If screenshots are absent, continue with readable public data and mark screenshot-only details as missing.
 - Use Sofascore shot xG, player ratings, heatmaps, and event views when available; they are especially useful for distinguishing real pressure from low-value shot volume.
 - Use WhoScored or Opta-style event data for tactical questions such as ball progression, repeated turnovers, zone occupation, and whether a midfield disconnect is structural.
 - Do not treat unavailable xG, big chances, shot-quality views, or official lineups as a blocker by itself. For pre-match forecasts, current-fixture xG and big chances do not exist, and official lineups may be unavailable until close to kickoff. Use recent tournament stats, official match-centre basics, credible team news, expected lineup reports, and role/style evidence as fallback.
@@ -88,6 +92,16 @@ Pattern examples:
 - An underdog that creates repeatable scoring routes across matches should be upgraded from "can frustrate" to "has a stable goal path." Track set pieces, direct play, crosses to a target forward, transition carries, long shots, and second balls.
 - Separate underdog resistance from underdog scoring. A compact low block, goalkeeper form, or defensive stamina can keep the score close without supporting BTTS. Upgrade underdog goals only when there is a repeatable route: target-forward outlet, set-piece taker, transition carrier, second-ball structure, or opponent-specific defensive gap.
 
+## Knockout Preparation Review
+
+Before knockout forecasts, run a compact tournament-to-date review instead of sorting teams by name value or power ranking alone.
+
+- Separate external media evaluation from your own read. Media consensus is calibration, not the conclusion.
+- Review actual match content: chance quality, opponent quality, game-state effects, defensive concessions, set pieces, transition exposure, and whether scorelines flattered or hid the team.
+- Review bench and integration: whether substitutes changed the game, protected a lead, restored chance creation, or kept defensive structure after 70 minutes.
+- Review core state: whether the main finisher, creator, ball progressor, defensive organizer, and goalkeeper look fit enough for knockout tempo and potential extra time.
+- Review knockout-specific risk: extra-time stamina, penalty profile, yellow-card suspension pressure, referee/card exposure, and whether the team has a plan B when its main route is blocked.
+
 ## Calibration Discipline
 
 - A complete forecast cannot be market-only or context-only. After a market page has been read, preserve that market baseline and move on to recent performance/data, player availability/news, match-state incentives, and style matchup. Do not re-read the same market source unless the captured price is ambiguous, stale, or incomplete.
@@ -103,6 +117,25 @@ Pattern examples:
 - If final lineups are unavailable, label the forecast provisional and name the specific lineup triggers that would move the score or winner lean.
 - In post-match review, classify key-event variance separately from model error: early red card, goalkeeper error, VAR reversal, penalty save, injury substitution, or extreme finishing. Explain whether the pre-match read was wrong before the event, or whether the event changed the match state.
 
+## Cards And Referee Risk
+
+Use a range, not false precision. A card forecast should include a main count, a reasonable range, and the main red-card trigger.
+
+- Start with referee profile when available: yellow-card average, red-card frequency, penalty frequency, tolerance for dissent, tactical fouls, and advantage play.
+- Adjust for knockout intensity, rivalry, elimination pressure, and whether one team is likely to defend long stretches or make repeated transition-stopping fouls.
+- Identify team-specific foul points: fullbacks isolated against wingers, midfielders chasing faster carriers, aerial duel mismatches, late recovery tackles, and repeated tactical fouls after turnovers.
+- Account for match state: early goal, trailing favorite, protecting a lead, extra-time fatigue, and late desperation can move cards above the baseline.
+- Keep suspension and prior red-card history separate from moral judgment. Use it only when it affects player behavior, referee attention, or lineup risk.
+- Output example: "cards main 5, reasonable range 4-6; red-card risk medium if Team B's fullback is repeatedly isolated."
+
+## Venue And Host Modifiers
+
+Do not treat a regional or co-host venue as full home advantage by default.
+
+- Split host effect into geography/travel, crowd mix, time zone, climate, stadium surface, familiarity, media pressure, and referee atmosphere.
+- A co-host playing in another co-host country, neutral NFL-style venue, or mixed-crowd city usually gets a small modifier unless evidence shows a clear crowd or travel edge.
+- Host pressure can help intensity but also increase finishing tension, disciplinary risk, or over-aggression. Treat it as directional context, not a decisive input.
+
 ## Style Matchup Diagnostics
 
 Do not force every team into a preferred formation, build-up shape, or possession model. Evaluate whether the team's actual approach creates and prevents high-quality chances.
@@ -114,6 +147,7 @@ Do not force every team into a preferred formation, build-up shape, or possessio
 - Defensive spacing limits the opponent's best chance creation route.
 - Set pieces, transitions, wide play, central combinations, or direct play fit the available players.
 - Game state changes do not immediately remove the team's main route to goal.
+- Substitutes preserve or improve intensity after 70 minutes, especially chance creation, defensive control, and transition protection.
 
 ### Warning indicators
 
@@ -123,6 +157,7 @@ Do not force every team into a preferred formation, build-up shape, or possessio
 - Recent coaching change, abrupt youth rebuild, public leaks, or player-confirmed lack of shared playing time undermines coordinated pressing, defensive spacing, set-piece assignments, and late-game resilience.
 - Aggressive attacking choices leave repeated high-value counterattacks.
 - The team needs to chase but lacks tools to create better chances.
+- The team is starter-dependent and its bench cannot protect leads, change attacking rhythm, or handle extra-time intensity.
 
 ## Match-State Incentives
 
@@ -146,6 +181,7 @@ Do not force every team into a preferred formation, build-up shape, or possessio
 - Favorites may avoid high-risk chasing while level, especially early, but should become more aggressive if extra time hurts them more than the opponent or if their bench can change chance creation.
 - Leading teams may protect game state earlier than in group matches; trailing underdogs may open up later, raising late-goal, counterattack, and extra-time variance.
 - Evaluate extra time separately: bench quality, injury load, recent minutes, age profile, heat, travel, pressing style, and late-game control can move the advancement lean even if the 90-minute score lean stays level.
+- Starter-dependent teams should carry explicit extra-time risk if substitutions have not preserved intensity or chance creation after 70 minutes.
 - Evaluate penalty shootouts explicitly when the match is close: goalkeeper penalty record, penalty-taker availability, set-piece/finisher substitutions, captain/leader presence, fatigue, and recent pressure-game history affect confidence.
 - When market data is available, distinguish 90-minute 1X2, to-advance markets, extra-time/penalty props, and totals. Do not mix a regulation draw price with an advancement probability.
 - Output knockout forecasts as regulation score plus advancement lean, for example: "1-1 after 90; Team A advances after extra time" or "0-0 after 90; Team B advances on penalties."
@@ -174,6 +210,7 @@ Sources used: Polymarket public page or Stake public odds page; team news report
 Calibration: Prior review showed overcorrecting to draws is risky, but this remains provisional because final lineups are unavailable.
 Prediction: A 1-0; backup 1-1.
 Knockout note: if applicable, 90-minute score; advancement lean; extra-time or penalty-shootout risk.
+Cards note: if requested, main card count; reasonable range; red-card trigger.
 Why: [market], [data], [availability], [style matchup].
 Failure mode: A cannot turn possession into box chances, or B scores first from transition/set piece.
 Missing data: Sofascore unavailable / lineup not confirmed / weather not checked.

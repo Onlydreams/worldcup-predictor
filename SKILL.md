@@ -1,6 +1,6 @@
 ---
 name: worldcup-predictor
-description: Use when analyzing or predicting World Cup or international football matches, especially when the user asks for match forecasts, score predictions, betting-market comparison, group qualification scenarios, knockout-stage scenarios, style matchup, player availability, post-match review, or iterative model corrections.
+description: Use when analyzing or predicting World Cup or international football matches, especially when the user asks for match forecasts, score predictions, betting-market comparison, card or discipline forecasts, group qualification scenarios, knockout-stage scenarios, style matchup, player availability, post-match review, or iterative model corrections.
 ---
 
 # World Cup Predictor
@@ -31,6 +31,8 @@ For a full match prediction, do not stop after reading only market odds or only 
 
 Treat advanced match data as high value but not always available. In pre-match forecasts, official lineups often appear only close to kickoff, and current-fixture xG or big chances do not exist yet; use recent match data, official match centre stats, credible news, and style/context checks instead. In post-match reviews, prefer xG, big chances, shot quality, and lineups when readable, but if Sofascore/FotMob/Flashscore are unavailable, use FIFA match centre, official reports, reliable recaps, and visible basic stats as fallback. Keep missing layers in the output and reduce confidence in the exact score or fine-grained tactical claim, not necessarily the whole winner lean.
 
+User screenshots are fallback or supplemental inputs, not required inputs. Do not block a forecast waiting for screenshots when public pages, credible reports, or enough layer evidence are available; mark screenshot-dependent details as missing or provisional instead.
+
 ## Market Lookup Defaults
 
 For World Cup match odds, check dedicated market pages before generic search:
@@ -49,7 +51,7 @@ Do not conclude that market odds are unavailable from generic web search alone. 
 4. **Verify recent performance**: prefer last tournament match data over friendlies, but also inspect recent five friendlies/pre-tournament matches when available. For immediate matchday reads, prefer verified Sofascore/FotMob/Flashscore data or user-supplied screenshots; use WhoScored/Sofascore event or shot-level data when available; use FBref, StatsBomb free data, and Understat mainly for delayed review, model calibration, or historical context. Check opponent quality, xG/chance quality, shots on target, big chances, saves, player ratings, minutes, and whether the scoreline was misleading.
 5. **Check player availability**: injuries, suspensions, illness, rotation, expected starters, whether key players are truly fit enough to execute their role for 60-70 minutes, and whether replacements preserve or change the team's main route to goal.
 6. **Analyze style matchup**: test how each team creates chances, prevents chances, handles pressure, progresses the ball, defends transitions, and uses set pieces without forcing a preferred shape or formation.
-7. **Account for context**: heat/humidity, travel, home/host boost, kickoff time, venue surface, referee/discipline risk, and governance or continuity signals if known. Treat climate as a modifier, not the master variable.
+7. **Account for context**: heat/humidity, travel, home/host boost, kickoff time, venue surface, referee/discipline risk, and governance or continuity signals if known. Treat climate and host effects as modifiers, not master variables.
 8. **Produce prediction**: give winner/draw lean, exact score, backup score, confidence, and the single most important failure mode. For knockout matches, separate 90-minute score from advancement lean and note extra-time or penalty-shootout risk. If odds or betting markets were used, include a brief disclaimer that the analysis is not betting or financial advice.
 9. **Post-match review**: compare prediction with score, xG/chances, ratings, key events, and update the model. Do not overgeneralize from one matchday.
 
@@ -78,6 +80,7 @@ Then add short match notes:
 - **Calibration**: prior post-match lessons applied, and whether this is provisional or final based on lineup availability.
 - **Prediction**: score and backup score.
 - **Knockout note**: for knockout matches, separate 90-minute result from advancement lean, extra-time risk, and penalty-shootout risk.
+- **Cards note**: when asked for cards or discipline, give a main card count plus a reasonable range and the main red-card trigger.
 - **Why**: 2-4 strongest reasons.
 - **Failure mode**: the most likely way the prediction breaks.
 - **Missing data**: important unavailable source layers.
@@ -103,5 +106,7 @@ Then add short match notes:
 - Do not lump all inefficient favorites together; separate low-quality volume from high-quality under-conversion before capping margin or allowing rebound.
 - Do not apply group-stage draw, goal-difference, third-place, or "draw is enough" logic to knockout matches; separate 90-minute result from advancement.
 - Do not ignore extra time and penalties in knockout matches; check goalkeeper penalty record, taker availability, substitute depth, fatigue, and late-game control.
+- Do not treat predicted lineups or user screenshots as official lineups; label them as provisional and name the triggers that would change the forecast.
+- Do not convert a co-host or regional venue into full home advantage without checking travel, crowd mix, climate, stadium familiarity, and pressure.
 
 For detailed weighting, confidence rules, and review templates, read `references/prediction-framework.md`.

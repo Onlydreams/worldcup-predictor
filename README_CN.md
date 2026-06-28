@@ -2,14 +2,16 @@
 
 一个用于世界杯和国际足球比赛分析的 agent skill。
 
-它会引导 AI agent 把盘口/市场基线、真实比赛数据、球队新闻、打法匹配、小组出线动机和赛后复盘放在一起判断，而不是只看赔率、纸面实力或上一场比分。
+它会引导 AI agent 把盘口/市场基线、真实比赛数据、球队新闻、打法匹配、比赛状态动机和赛后复盘放在一起判断，而不是只看赔率、纸面实力或上一场比分。
 
 ## 能做什么
 
 - 按证据层分析比赛：市场、数据、新闻、背景、打法匹配。
 - 要求 agent 明确说明实际使用了哪些信息源。
 - 把公开赔率页和博彩市场页当作分析输入，而不是最终结论。
-- 检查球员可用性、角色状态、打法匹配、小组动机和环境因素。
+- 检查球员可用性、角色状态、打法匹配、小组赛/淘汰赛比赛状态动机和环境因素。
+- 支持淘汰赛专项判断，包括 90 分钟结果、晋级倾向、加时、点球大战和替补深度。
+- 支持卡牌/纪律预测，结合裁判尺度、犯规点、比赛状态和合理牌数区间。
 - 输出紧凑预测：比分、备选比分、信心、失败模式、缺失数据。
 - 支持赛后复盘，用结果和机会质量修正后续判断。
 
@@ -54,7 +56,7 @@ SKILL.md
 在需要世界杯或国际足球比赛分析时调用：
 
 ```text
-Use $worldcup-predictor to analyze Spain vs Portugal using current team news, market baseline, recent match data, style matchup, and group incentives.
+Use $worldcup-predictor to analyze Spain vs Portugal using current team news, market baseline, recent match data, style matchup, and match-state incentives.
 ```
 
 适合的请求包括：
@@ -63,6 +65,8 @@ Use $worldcup-predictor to analyze Spain vs Portugal using current team news, ma
 - 精确比分预测
 - 把盘口/市场作为证据层进行对比
 - 小组出线形势分析
+- 淘汰赛晋级、加时和点球大战场景分析
+- 卡牌/纪律预测
 - 球员伤停和首发影响分析
 - 打法匹配分析
 - 赛后预测复盘
