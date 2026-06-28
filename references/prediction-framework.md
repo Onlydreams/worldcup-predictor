@@ -12,7 +12,7 @@ Keep all forecasts informational. Odds, betting markets, and exchange prices are
 | Player availability/state | 25% | starters, injuries, suspensions, illness, role fitness, ratings |
 | Current data | 20% | xG, big chances, shots on target, saves, chance locations, momentum |
 | Market baseline | 15% | Polymarket, Stake, books, liquidity, line movement |
-| Group/context/environment | 15% | standings, draw value, path incentives, host boost, heat, travel, governance and continuity signals |
+| Match-state/context/environment | 15% | group standings or knockout bracket, draw value, advancement path, host boost, heat, travel, governance and continuity signals |
 
 Raise player availability above 25% when a team depends on one or two key roles: a build-up organizer, main ball progressor, primary chance creator, defensive organizer, goalkeeper, set-piece specialist, or main finisher. Use named players only as verified, tournament-specific examples; do not treat them as permanent rules. Availability means role fitness, expected minutes, and replacement quality, not just whether the player appears in the squad.
 
@@ -42,12 +42,13 @@ Access discipline matters as much as source quality. If a site returns 403, requ
 - Do not treat a failed generic search, a team-name-only Polymarket Gamma API search, or an unrelated API result as proof that odds do not exist. The public sport/game aggregation page can expose fixtures that API search misses.
 - For Polymarket public pages, read visible market text first: moneyline, draw, spreads, totals, BTTS, first-team-to-score, displayed volume, and any visible probability/cent price. Clean duplicated or concatenated page text before using it.
 - For Stake public pages, use the direct World Cup soccer URL first. If it blocks access, requires heavy JavaScript, redirects away, or shows no normal 1X2 fixture odds, record Stake as unavailable for that match and move on. Do not keep retrying Stake, do not infer that the whole market layer is unavailable, and do not invent odds.
+- If Stake's generic soccer page redirects to casino/home, do not mark Stake unavailable until the direct World Cup URL `https://stake.com/zh/sports/soccer/international/world-cup` has been tried.
 - Separate normal 1X2 decimal odds from signup offers, free bets, odds boosts, and acquisition promos. Promotional prices are not a market baseline.
 - Do not claim Polymarket orderbook depth, bid/ask spread, midpoint, or token-level detail unless an API/orderbook source was actually read. Public page text is enough for baseline probability, not precise execution quality.
 - Convert odds/prices into rough probabilities, but avoid false precision when using screenshots or noisy page text.
 - Compare 1X2 with handicap and totals.
 - Favorite with weak handicap support often means small win, not blowout.
-- Heavy favorite plus deep handicap support plus group net-goal incentive supports multi-goal predictions.
+- Heavy favorite plus deep handicap support plus group net-goal incentive supports multi-goal predictions in group matches.
 - Low total with strong favorite supports 1-0 or 2-0 rather than 3-1.
 - Polymarket low liquidity, low volume, stale visible prices, or very wide spread should be weak reference only.
 
@@ -83,11 +84,13 @@ Pattern examples:
 - A possession-dominant 0-1 loss does not prove poor team quality by itself; inspect whether possession became high-quality chances.
 - A reputation-heavy favorite can underperform when the actual team sheet removes key chance creation, progression, defensive control, or finishing roles.
 - A favorite with consecutive low-efficiency attacking games should not be treated as due for automatic rebound. Upgrade only if the lineup, roles, or previous-match chance quality show a real route to repair.
+- Split inefficient favorites into low-quality volume and high-quality under-conversion. Keep margin capped for low-quality volume, but allow a rebound scoreline when prior matches show strong xG, big chances, shots on target, repeated box entries, or an opponent with weaker defensive personnel.
 - An underdog that creates repeatable scoring routes across matches should be upgraded from "can frustrate" to "has a stable goal path." Track set pieces, direct play, crosses to a target forward, transition carries, long shots, and second balls.
+- Separate underdog resistance from underdog scoring. A compact low block, goalkeeper form, or defensive stamina can keep the score close without supporting BTTS. Upgrade underdog goals only when there is a repeatable route: target-forward outlet, set-piece taker, transition carrier, second-ball structure, or opponent-specific defensive gap.
 
 ## Calibration Discipline
 
-- A complete forecast cannot be market-only or context-only. After a market page has been read, preserve that market baseline and move on to recent performance/data, player availability/news, group/context incentives, and style matchup. Do not re-read the same market source unless the captured price is ambiguous, stale, or incomplete.
+- A complete forecast cannot be market-only or context-only. After a market page has been read, preserve that market baseline and move on to recent performance/data, player availability/news, match-state incentives, and style matchup. Do not re-read the same market source unless the captured price is ambiguous, stale, or incomplete.
 - If Sofascore/FotMob/Flashscore/xG, lineup, or injury data cannot be read, say exactly which layer is missing. Missing advanced event data mostly caps confidence in exact score, margin, and chance-quality claims; missing key availability or lineup facts can cap confidence in the winner lean. Do not silently replace missing data with market prices.
 - Carry forward explicit lessons from recent post-match reviews before making a new forecast.
 - After a run of draws, raise draw awareness but do not apply blanket draw protection.
@@ -98,6 +101,7 @@ Pattern examples:
 - Structural or role gaps should usually cap margin first, then raise draw risk; they should not automatically flip the match to an upset.
 - Public criticism from core players about rushed federation rebuilds, leaks, squad discontinuity, or instability is a high-weight cohesion signal, not ordinary post-match venting. Downgrade team cohesion, tactical continuity, defensive coordination, and late-game resilience. Keep unverified corruption, payment, or internal-politics claims separate until sourced.
 - If final lineups are unavailable, label the forecast provisional and name the specific lineup triggers that would move the score or winner lean.
+- In post-match review, classify key-event variance separately from model error: early red card, goalkeeper error, VAR reversal, penalty save, injury substitution, or extreme finishing. Explain whether the pre-match read was wrong before the event, or whether the event changed the match state.
 
 ## Style Matchup Diagnostics
 
@@ -120,13 +124,31 @@ Do not force every team into a preferred formation, build-up shape, or possessio
 - Aggressive attacking choices leave repeated high-value counterattacks.
 - The team needs to chase but lacks tools to create better chances.
 
-## Group Incentives
+## Match-State Incentives
+
+### Group Stage
 
 - Team on 3 points may accept draw if it nearly secures qualification.
 - Team on 1 point against weak opponent may chase net goal difference.
 - Team on 0 points in match two usually cannot accept a draw, but may still lack tools to chase.
+- Third-place qualification pressure can raise draw probability, but it does not automatically imply a low-total match. Separate draw incentive from low-scoring incentive. If either side has strong transition attackers, set-piece threats, or an early-goal path, keep 2-2 or 3-3 draw states alive.
+- A team that is safe with a draw may still chase second place, bracket position, host momentum, or internal selection credibility. Do not treat "draw is enough" as "draw is preferred" unless team news, coach quotes, lineup choices, and market totals support it.
+- Rotation impact must be evaluated for both teams. If the underdog or near-peer removes its main finisher, progression hub, goalkeeper, or defensive organizer, upgrade the favorite's margin even if the favorite is also qualified.
+- Already qualified is not enough to downgrade a favorite. Check whether the opponent is rotating core roles, whether the favorite's replacements preserve chance creation, and whether goal difference, group position, or momentum still matters.
 - Team already eliminated may either rotate, collapse, or play freer. Do not assume a pride rebound unless lineup intent, player buy-in, coaching stability, and cohesion signals support it.
 - Path incentives matter only if teams can realistically control placement; do not overweight speculative bracket choices early.
+
+### Knockout Stage
+
+- Separate 90-minute prediction from advancement prediction. A team can be more likely to advance without being clearly likely to win in regulation.
+- Do not apply group-stage third-place, goal-difference, or "draw is enough" logic to knockout matches. A draw after 90 minutes means extra time and possibly penalties, not a final table outcome.
+- Weak or near-peer teams may rationally aim to reach extra time or penalties if their open-play chance creation is limited but their goalkeeper, penalty takers, defensive block, or fatigue profile is competitive.
+- Favorites may avoid high-risk chasing while level, especially early, but should become more aggressive if extra time hurts them more than the opponent or if their bench can change chance creation.
+- Leading teams may protect game state earlier than in group matches; trailing underdogs may open up later, raising late-goal, counterattack, and extra-time variance.
+- Evaluate extra time separately: bench quality, injury load, recent minutes, age profile, heat, travel, pressing style, and late-game control can move the advancement lean even if the 90-minute score lean stays level.
+- Evaluate penalty shootouts explicitly when the match is close: goalkeeper penalty record, penalty-taker availability, set-piece/finisher substitutions, captain/leader presence, fatigue, and recent pressure-game history affect confidence.
+- When market data is available, distinguish 90-minute 1X2, to-advance markets, extra-time/penalty props, and totals. Do not mix a regulation draw price with an advancement probability.
+- Output knockout forecasts as regulation score plus advancement lean, for example: "1-1 after 90; Team A advances after extra time" or "0-0 after 90; Team B advances on penalties."
 
 ## Confidence Labels
 
@@ -137,6 +159,8 @@ Do not force every team into a preferred formation, build-up shape, or possessio
 | Low | signals conflict, key lineups unknown, or team styles create high variance |
 
 Separate confidence in result from confidence in exact score. Exact score is usually lower confidence.
+
+For knockout matches, separate confidence in regulation result from confidence in advancement. Penalty-shootout outcomes are usually low-confidence unless there is strong goalkeeper, taker, or fatigue evidence.
 
 ## Standard Answer Template
 
@@ -149,6 +173,7 @@ Separate confidence in result from confidence in exact score. Exact score is usu
 Sources used: Polymarket public page or Stake public odds page; team news report; style-matchup notes. Data layer unavailable.
 Calibration: Prior review showed overcorrecting to draws is risky, but this remains provisional because final lineups are unavailable.
 Prediction: A 1-0; backup 1-1.
+Knockout note: if applicable, 90-minute score; advancement lean; extra-time or penalty-shootout risk.
 Why: [market], [data], [availability], [style matchup].
 Failure mode: A cannot turn possession into box chances, or B scores first from transition/set piece.
 Missing data: Sofascore unavailable / lineup not confirmed / weather not checked.

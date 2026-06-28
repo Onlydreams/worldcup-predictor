@@ -1,4 +1,4 @@
 interface:
   display_name: "World Cup Predictor"
   short_description: "World Cup match prediction workflow"
-  default_prompt: "Use $worldcup-predictor for informational World Cup match analysis with market odds, team news, data, style matchup, and group incentives."
+  default_prompt: "Use $worldcup-predictor for informational World Cup match analysis with market odds, team news, data, style matchup, and group or knockout match-state incentives."

@@ -1,13 +1,13 @@
 ---
 name: worldcup-predictor
-description: Use when analyzing or predicting World Cup or international football matches, especially when the user asks for match forecasts, score predictions, betting-market comparison, group qualification scenarios, style matchup, player availability, post-match review, or iterative model corrections.
+description: Use when analyzing or predicting World Cup or international football matches, especially when the user asks for match forecasts, score predictions, betting-market comparison, group qualification scenarios, knockout-stage scenarios, style matchup, player availability, post-match review, or iterative model corrections.
 ---
 
 # World Cup Predictor
 
 ## Core Principle
 
-Predict matches by combining market baseline, verified data, team news, style matchup, and group incentives. Do not let one signal dominate: odds can overprice favorites, scorelines can hide chance quality, and possession can hide low chance quality.
+Predict matches by combining market baseline, verified data, team news, style matchup, and match-state incentives. Do not let one signal dominate: odds can overprice favorites, scorelines can hide chance quality, and possession can hide low chance quality.
 
 ## Disclaimer
 
@@ -22,12 +22,12 @@ Before forecasting, state which source layers were actually used:
 | Market | Polymarket public market pages, Stake public odds pages, major books, screenshots only as fallback | Use as baseline, not verdict |
 | Data | Sofascore, FotMob, Flashscore, WhoScored, FBref, match centre stats | Prefer for xG, big chances, saves, ratings, momentum |
 | News | FIFA, federations, Guardian, BBC, ESPN, local beat reports | Use for injuries, suspensions, lineup clues, travel/weather |
-| Context | Group table, path, schedule, venue, weather, governance and continuity signals | Use for motivation, risk appetite, and team stability |
+| Context | group table, knockout bracket, path, schedule, venue, weather, governance and continuity signals | Use for motivation, risk appetite, and team stability |
 | Style matchup | pressing, buildup routes, chance creation patterns, transition risk, set pieces | Use to explain how chances are created or denied |
 
 If a layer is missing, say so and reduce confidence. Never claim Sofascore, FotMob, Flashscore, WhoScored, FBref, Stake, Polymarket, or lineup data was used unless it was directly read from a public page/API or supplied by the user. Treat FBref as a delayed review and validation source, not a real-time matchday source, unless current-match data is verified.
 
-For a full match prediction, do not stop after reading only market odds or only schedule/group context. Before producing the final forecast, make a visible attempt to check market baseline, recent performance/data, player availability/news, group/context incentives, and style matchup.
+For a full match prediction, do not stop after reading only market odds or only schedule/context. Before producing the final forecast, make a visible attempt to check market baseline, recent performance/data, player availability/news, match-state incentives, and style matchup.
 
 Treat advanced match data as high value but not always available. In pre-match forecasts, official lineups often appear only close to kickoff, and current-fixture xG or big chances do not exist yet; use recent match data, official match centre stats, credible news, and style/context checks instead. In post-match reviews, prefer xG, big chances, shot quality, and lineups when readable, but if Sofascore/FotMob/Flashscore are unavailable, use FIFA match centre, official reports, reliable recaps, and visible basic stats as fallback. Keep missing layers in the output and reduce confidence in the exact score or fine-grained tactical claim, not necessarily the whole winner lean.
 
@@ -44,13 +44,13 @@ Do not conclude that market odds are unavailable from generic web search alone. 
 ## Forecast Workflow
 
 1. **Check calibration state**: if prior post-match reviews or user-cited earlier sessions exist, carry forward the explicit model corrections before forecasting. Do not let a recent draw cluster cause blanket draw protection, and do not overcorrect back to paper favorites while ignoring injuries, starters, or role gaps.
-2. **Identify match state**: date/time, group, standings, qualification incentives, and whether a draw helps either side.
+2. **Identify match state**: date/time, group or knockout round, standings or bracket path, qualification/advancement incentives, and whether draw, extra time, or penalties change each team's risk appetite.
 3. **Set market baseline**: follow the market lookup defaults above, then convert visible prices/odds into rough favorite, draw, and total-goals expectations. Note liquidity, volume, wide spreads, stale pages, missing markets, or pages that only load earlier fixtures. Use Polymarket API only when public page text cannot expose the needed market or when orderbook/bid-ask detail is specifically required.
 4. **Verify recent performance**: prefer last tournament match data over friendlies, but also inspect recent five friendlies/pre-tournament matches when available. For immediate matchday reads, prefer verified Sofascore/FotMob/Flashscore data or user-supplied screenshots; use WhoScored/Sofascore event or shot-level data when available; use FBref, StatsBomb free data, and Understat mainly for delayed review, model calibration, or historical context. Check opponent quality, xG/chance quality, shots on target, big chances, saves, player ratings, minutes, and whether the scoreline was misleading.
 5. **Check player availability**: injuries, suspensions, illness, rotation, expected starters, whether key players are truly fit enough to execute their role for 60-70 minutes, and whether replacements preserve or change the team's main route to goal.
 6. **Analyze style matchup**: test how each team creates chances, prevents chances, handles pressure, progresses the ball, defends transitions, and uses set pieces without forcing a preferred shape or formation.
 7. **Account for context**: heat/humidity, travel, home/host boost, kickoff time, venue surface, referee/discipline risk, and governance or continuity signals if known. Treat climate as a modifier, not the master variable.
-8. **Produce prediction**: give winner/draw lean, exact score, backup score, confidence, and the single most important failure mode. If odds or betting markets were used, include a brief disclaimer that the analysis is not betting or financial advice.
+8. **Produce prediction**: give winner/draw lean, exact score, backup score, confidence, and the single most important failure mode. For knockout matches, separate 90-minute score from advancement lean and note extra-time or penalty-shootout risk. If odds or betting markets were used, include a brief disclaimer that the analysis is not betting or financial advice.
 9. **Post-match review**: compare prediction with score, xG/chances, ratings, key events, and update the model. Do not overgeneralize from one matchday.
 
 Do not repeat a completed layer while required layers remain unchecked. For example, once market prices have been read, move to data, news, context, and style instead of re-reading the same market page unless the market data is ambiguous or stale.
@@ -77,6 +77,7 @@ Then add short match notes:
 - **Sources used**: market, data, news, context, and style-matchup layers actually used.
 - **Calibration**: prior post-match lessons applied, and whether this is provisional or final based on lineup availability.
 - **Prediction**: score and backup score.
+- **Knockout note**: for knockout matches, separate 90-minute result from advancement lean, extra-time risk, and penalty-shootout risk.
 - **Why**: 2-4 strongest reasons.
 - **Failure mode**: the most likely way the prediction breaks.
 - **Missing data**: important unavailable source layers.
@@ -97,5 +98,10 @@ Then add short match notes:
 - Do not treat climate, opening-round caution, or a cluster of draws as a master variable.
 - Do not swing from "too conservative" straight back to paper-strength favorites when key creators, finishers, defenders, or starters are missing or limited.
 - Do not assume an eliminated team will produce an automatic pride rebound; check player buy-in, lineup intent, coaching stability, and whether governance or cohesion signals are already broken.
+- Do not treat third-place pressure or "draw is enough" as automatic low-total or preferred draw; check lineup intent, transition threat, set pieces, and market totals.
+- Do not downgrade an already-qualified favorite without checking both teams' rotation and whether the opponent has removed core scoring, progression, goalkeeper, or defensive roles.
+- Do not lump all inefficient favorites together; separate low-quality volume from high-quality under-conversion before capping margin or allowing rebound.
+- Do not apply group-stage draw, goal-difference, third-place, or "draw is enough" logic to knockout matches; separate 90-minute result from advancement.
+- Do not ignore extra time and penalties in knockout matches; check goalkeeper penalty record, taker availability, substitute depth, fatigue, and late-game control.
 
 For detailed weighting, confidence rules, and review templates, read `references/prediction-framework.md`.
