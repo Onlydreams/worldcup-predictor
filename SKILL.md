@@ -51,9 +51,10 @@ Do not conclude that market odds are unavailable from generic web search alone. 
 4. **Verify recent performance**: prefer last tournament match data over friendlies, but also inspect recent five friendlies/pre-tournament matches when available. For immediate matchday reads, prefer verified Sofascore/FotMob/Flashscore data or user-supplied screenshots; use WhoScored/Sofascore event or shot-level data when available; use FBref, StatsBomb free data, and Understat mainly for delayed review, model calibration, or historical context. Check opponent quality, xG/chance quality, shots on target, big chances, saves, player ratings, minutes, and whether the scoreline was misleading.
 5. **Check player availability**: injuries, suspensions, illness, rotation, expected starters, whether key players are truly fit enough to execute their role for 60-70 minutes, and whether replacements preserve or change the team's main route to goal.
 6. **Analyze style matchup**: test how each team creates chances, prevents chances, handles pressure, progresses the ball, defends transitions, and uses set pieces without forcing a preferred shape or formation.
-7. **Account for context**: heat/humidity, travel, home/host boost, kickoff time, venue surface, referee/discipline risk, and governance or continuity signals if known. Treat climate and host effects as modifiers, not master variables.
-8. **Produce prediction**: give winner/draw lean, exact score, backup score, confidence, and the single most important failure mode. For knockout matches, separate 90-minute score from advancement lean and note extra-time or penalty-shootout risk. If odds or betting markets were used, include a brief disclaimer that the analysis is not betting or financial advice.
-9. **Post-match review**: compare prediction with score, xG/chances, ratings, key events, and update the model. Do not overgeneralize from one matchday.
+7. **Stress-test paper favorites**: before backing a reputation-heavy or market-heavy favorite, require evidence that it can turn territory into high-quality box chances against this opponent. If recent matches show low-quality volume, weak striker/box occupation, overlapping creators, or limited second-ball pressure, cap the margin and raise draw, extra-time, and penalty branches instead of assuming automatic repair.
+8. **Account for context**: heat/humidity, travel, home/host boost, kickoff time, venue surface, altitude, referee/discipline risk, and governance or continuity signals if known. Treat climate and host effects as modifiers, not master variables. For altitude, separate stadium familiarity and crowd pressure from physiological adaptation; do not give a large altitude edge to a host if the opponent routinely plays or trains at comparable or higher altitude.
+9. **Produce prediction**: give winner/draw lean, exact score, backup score, confidence, and the single most important failure mode. For knockout matches, separate 90-minute score from advancement lean and note extra-time or penalty-shootout risk. If odds or betting markets were used, include a brief disclaimer that the analysis is not betting or financial advice.
+10. **Post-match review**: compare prediction with score, xG/chances, ratings, key events, and update the model. Do not overgeneralize from one matchday.
 
 Do not repeat a completed layer while required layers remain unchecked. For example, once market prices have been read, move to data, news, context, and style instead of re-reading the same market page unless the market data is ambiguous or stale.
 
@@ -62,6 +63,7 @@ Do not repeat a completed layer while required layers remain unchecked. For exam
 Analyze team style without privileging a specific formation, build-up shape, or possession structure.
 
 - Strong favorite is safer when it repeatedly creates high-quality chances and limits the opponent's most dangerous route to goal.
+- Reputation-heavy favorites are unsafe when their advantage is mostly possession, names, or market price. Upgrade them only when lineup roles, recent chance quality, set pieces, bench impact, or opponent weaknesses show a repeatable route to clear chances.
 - Be skeptical when possession, shot count, or territorial pressure does not translate into clear chances.
 - Distinguish **pressure** from **chance quality**. A team can have 70% possession, 20+ shots, and still mostly create low-value attempts.
 - Extra man is not automatic advantage. Ask whether the team can turn numbers into clear chances, second-ball recovery, and defensive control.
@@ -89,6 +91,7 @@ Then add short match notes:
 ## Common Mistakes
 
 - Do not equate favorite price with goal margin.
+- Do not treat a famous or high-ranked favorite as having automatic knockout-stage penetration. If it has not proven stable chance creation against compact blocks, make regulation draw or narrow win a live branch.
 - Do not equate first-match score with true form; inspect chance quality and opponent collapse.
 - Do not treat FBref, StatsBomb free data, or Understat as real-time sources for current World Cup matches unless current-match coverage was directly verified.
 - Do not overrate friendlies over current tournament data.
@@ -106,7 +109,9 @@ Then add short match notes:
 - Do not lump all inefficient favorites together; separate low-quality volume from high-quality under-conversion before capping margin or allowing rebound.
 - Do not apply group-stage draw, goal-difference, third-place, or "draw is enough" logic to knockout matches; separate 90-minute result from advancement.
 - Do not ignore extra time and penalties in knockout matches; check goalkeeper penalty record, taker availability, substitute depth, fatigue, and late-game control.
+- Do not treat penalty shootouts as afterthoughts for inefficient favorites. When a favorite lacks open-play chance quality, penalty and extra-time risk should affect the main forecast, not only the failure mode.
 - Do not treat predicted lineups or user screenshots as official lineups; label them as provisional and name the triggers that would change the forecast.
 - Do not convert a co-host or regional venue into full home advantage without checking travel, crowd mix, climate, stadium familiarity, and pressure.
+- Do not convert altitude into a one-way home edge without checking both teams' altitude background, domestic venues, player acclimatization, travel timing, and whether the edge is physiological or mostly crowd/stadium familiarity.
 
 For detailed weighting, confidence rules, and review templates, read `references/prediction-framework.md`.

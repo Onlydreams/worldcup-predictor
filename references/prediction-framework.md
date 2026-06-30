@@ -16,6 +16,8 @@ Keep all forecasts informational. Odds, betting markets, and exchange prices are
 
 Raise player availability above 25% when a team depends on one or two key roles: a build-up organizer, main ball progressor, primary chance creator, defensive organizer, goalkeeper, set-piece specialist, or main finisher. Use named players only as verified, tournament-specific examples; do not treat them as permanent rules. Availability means role fitness, expected minutes, and replacement quality, not just whether the player appears in the squad.
 
+For knockout matches, raise the style-matchup weight when a favorite has not proven it can create high-quality chances against compact blocks. Paper strength, ranking, and possession become weaker inputs if the team lacks a clear box-occupation plan, reliable striker profile, second-ball pressure, or a bench route to change the rhythm after 70 minutes.
+
 ## Source Tiers
 
 | Tier | Sources | Use |
@@ -89,6 +91,7 @@ Pattern examples:
 - A reputation-heavy favorite can underperform when the actual team sheet removes key chance creation, progression, defensive control, or finishing roles.
 - A favorite with consecutive low-efficiency attacking games should not be treated as due for automatic rebound. Upgrade only if the lineup, roles, or previous-match chance quality show a real route to repair.
 - Split inefficient favorites into low-quality volume and high-quality under-conversion. Keep margin capped for low-quality volume, but allow a rebound scoreline when prior matches show strong xG, big chances, shots on target, repeated box entries, or an opponent with weaker defensive personnel.
+- For a reputation-heavy knockout favorite, ask whether its recent possession became clear chances against set defenses. If not, move a regulation draw, extra time, and penalties into the central forecast instead of leaving them as a remote failure mode.
 - An underdog that creates repeatable scoring routes across matches should be upgraded from "can frustrate" to "has a stable goal path." Track set pieces, direct play, crosses to a target forward, transition carries, long shots, and second balls.
 - Separate underdog resistance from underdog scoring. A compact low block, goalkeeper form, or defensive stamina can keep the score close without supporting BTTS. Upgrade underdog goals only when there is a repeatable route: target-forward outlet, set-piece taker, transition carrier, second-ball structure, or opponent-specific defensive gap.
 
@@ -109,6 +112,7 @@ Before knockout forecasts, run a compact tournament-to-date review instead of so
 - Carry forward explicit lessons from recent post-match reviews before making a new forecast.
 - After a run of draws, raise draw awareness but do not apply blanket draw protection.
 - After noticing overconservatism, do not swing back to paper-strength favorites without rechecking key role fitness, starters, and recent chance quality.
+- After a paper-strength favorite fails because it could not break a compact block, do not correct only the specific team. Generalize the rule: reputation, ranking, and market price need proof of chance quality, box occupation, set pieces, bench impact, or transition control before supporting a confident regulation win.
 - After a favored team has failed to score from open play or produced repeated low-quality volume, cap its margin and raise draw risk until there is concrete evidence of chance-creation repair.
 - After a smaller team shows real scoring routes in consecutive tournament matches, give that route independent weight even if market price, reputation, or possession profile still favors the opponent.
 - Strong teams with healthy elite creators/finishers should not be flattened into default draws by climate or opening-round caution alone.
@@ -133,6 +137,7 @@ Use a range, not false precision. A card forecast should include a main count, a
 Do not treat a regional or co-host venue as full home advantage by default.
 
 - Split host effect into geography/travel, crowd mix, time zone, climate, stadium surface, familiarity, media pressure, and referee atmosphere.
+- Split altitude into stadium familiarity, crowd pressure, and physiological adaptation. A host at altitude gets less unique edge when the opponent routinely plays, trains, or qualifies at comparable or higher altitude. In those cases, keep the host modifier mostly to crowd/stadium familiarity rather than stamina.
 - A co-host playing in another co-host country, neutral NFL-style venue, or mixed-crowd city usually gets a small modifier unless evidence shows a clear crowd or travel edge.
 - Host pressure can help intensity but also increase finishing tension, disciplinary risk, or over-aggression. Treat it as directional context, not a decisive input.
 
@@ -143,6 +148,7 @@ Do not force every team into a preferred formation, build-up shape, or possessio
 ### Positive indicators
 
 - The team creates repeatable high-quality chances, not just territory or shot volume.
+- The team has a credible plan B when central combinations fail: target-forward outlet, wide crossing with box numbers, set-piece threat, second-ball counterpress, or substitution pattern that has already changed games.
 - Ball progression remains functional under pressure.
 - Defensive spacing limits the opponent's best chance creation route.
 - Set pieces, transitions, wide play, central combinations, or direct play fit the available players.
@@ -152,6 +158,7 @@ Do not force every team into a preferred formation, build-up shape, or possessio
 ### Warning indicators
 
 - Possession or pressure produces few clear chances.
+- A favorite's main edge is mostly reputation, ranking, or possession, while recent matches show few big chances, weak box occupation, or low-quality shot volume.
 - Key creators occupy the same zones and reduce each other's influence.
 - Injuries or role changes remove the team's main progression, creation, or finishing route.
 - Recent coaching change, abrupt youth rebuild, public leaks, or player-confirmed lack of shared playing time undermines coordinated pressing, defensive spacing, set-piece assignments, and late-game resilience.
@@ -183,6 +190,7 @@ Do not force every team into a preferred formation, build-up shape, or possessio
 - Evaluate extra time separately: bench quality, injury load, recent minutes, age profile, heat, travel, pressing style, and late-game control can move the advancement lean even if the 90-minute score lean stays level.
 - Starter-dependent teams should carry explicit extra-time risk if substitutions have not preserved intensity or chance creation after 70 minutes.
 - Evaluate penalty shootouts explicitly when the match is close: goalkeeper penalty record, penalty-taker availability, set-piece/finisher substitutions, captain/leader presence, fatigue, and recent pressure-game history affect confidence.
+- When the favorite's open-play chance creation is unproven, do not write "favorite advances" without a regulation draw branch. Use formulations such as "1-1 after 90; favorite slight edge in extra time" or "favorite stronger on paper, but penalty path is a major live branch."
 - When market data is available, distinguish 90-minute 1X2, to-advance markets, extra-time/penalty props, and totals. Do not mix a regulation draw price with an advancement probability.
 - Output knockout forecasts as regulation score plus advancement lean, for example: "1-1 after 90; Team A advances after extra time" or "0-0 after 90; Team B advances on penalties."
 
