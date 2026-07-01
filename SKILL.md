@@ -27,6 +27,8 @@ Before forecasting, state which source layers were actually used:
 
 If a layer is missing, say so and reduce confidence. Never claim Sofascore, FotMob, Flashscore, WhoScored, FBref, Stake, Polymarket, or lineup data was used unless it was directly read from a public page/API or supplied by the user. Treat FBref as a delayed review and validation source, not a real-time matchday source, unless current-match data is verified.
 
+If the user says relevant match pages are already open, inspect the available pages or tabs first and identify the exact match/event page before writing a scraper or using an API. Choose DOM reading, screenshot reading, or API/script access only after confirming what is already available.
+
 For a full match prediction, do not stop after reading only market odds or only schedule/context. Before producing the final forecast, make a visible attempt to check market baseline, recent performance/data, player availability/news, match-state incentives, and style matchup.
 
 Treat advanced match data as high value but not always available. In pre-match forecasts, official lineups often appear only close to kickoff, and current-fixture xG or big chances do not exist yet; use recent match data, official match centre stats, credible news, and style/context checks instead. In post-match reviews, prefer xG, big chances, shot quality, and lineups when readable, but if Sofascore/FotMob/Flashscore are unavailable, use FIFA match centre, official reports, reliable recaps, and visible basic stats as fallback. Keep missing layers in the output and reduce confidence in the exact score or fine-grained tactical claim, not necessarily the whole winner lean.
@@ -65,6 +67,7 @@ Analyze team style without privileging a specific formation, build-up shape, or 
 - Strong favorite is safer when it repeatedly creates high-quality chances and limits the opponent's most dangerous route to goal.
 - Reputation-heavy favorites are unsafe when their advantage is mostly possession, names, or market price. Upgrade them only when lineup roles, recent chance quality, set pieces, bench impact, or opponent weaknesses show a repeatable route to clear chances.
 - Be skeptical when possession, shot count, or territorial pressure does not translate into clear chances.
+- Separate chance creation from finishing execution. A team can have ordinary buildup but remain dangerous if it has a reliable high-quality finisher, strong shot placement, or repeated xGOT overperformance from real chances.
 - Distinguish **pressure** from **chance quality**. A team can have 70% possession, 20+ shots, and still mostly create low-value attempts.
 - Extra man is not automatic advantage. Ask whether the team can turn numbers into clear chances, second-ball recovery, and defensive control.
 - Big first-match wins can be false signals when the opponent collapsed, received red cards, or conceded unusually easy chances.
@@ -92,6 +95,8 @@ Then add short match notes:
 
 - Do not equate favorite price with goal margin.
 - Do not treat a famous or high-ranked favorite as having automatic knockout-stage penetration. If it has not proven stable chance creation against compact blocks, make regulation draw or narrow win a live branch.
+- Do not group all favorites together; distinguish low-quality possession favorites from teams that repeatedly create big chances, strong xG, and high-value box touches.
+- Do not treat corners, crosses, box touches, or shot count as proof of domination without checking cross quality, shots on target, big chances, xG, and xGOT.
 - Do not equate first-match score with true form; inspect chance quality and opponent collapse.
 - Do not treat FBref, StatsBomb free data, or Understat as real-time sources for current World Cup matches unless current-match coverage was directly verified.
 - Do not overrate friendlies over current tournament data.
@@ -113,5 +118,6 @@ Then add short match notes:
 - Do not treat predicted lineups or user screenshots as official lineups; label them as provisional and name the triggers that would change the forecast.
 - Do not convert a co-host or regional venue into full home advantage without checking travel, crowd mix, climate, stadium familiarity, and pressure.
 - Do not convert altitude into a one-way home edge without checking both teams' altitude background, domestic venues, player acclimatization, travel timing, and whether the edge is physiological or mostly crowd/stadium familiarity.
+- Do not let historical narratives or knockout baggage outweigh current execution, early pressure, home/crowd momentum, and match state after an early goal.
 
 For detailed weighting, confidence rules, and review templates, read `references/prediction-framework.md`.

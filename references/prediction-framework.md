@@ -34,6 +34,8 @@ Mark uncertain facts clearly: confirmed, reported, inferred, or user-supplied.
 
 Access discipline matters as much as source quality. If a site returns 403, requires heavy JavaScript, blocks automated access, or only appears through a user screenshot, say exactly that. Do not promote a source into "used" unless the relevant match page, API output, or screenshot was actually read.
 
+If the user says relevant match pages are already open, first enumerate or inspect the available pages/tabs and confirm the exact match/event page. Use the already-open DOM or screenshot when it is readable; choose an API call or script only after confirming the page is unavailable, incomplete, or too noisy. Do not write a scraper before checking what the user has already opened.
+
 Predicted lineups from Sofascore, FotMob, other apps, or user screenshots can inform the pre-match personnel layer, but label them as predicted, not official. After reading a predicted lineup, list the specific lineup triggers that would change the forecast: main finisher starts or sits, defensive organizer returns, ball-progressor fitness, goalkeeper change, or whether a key player is fit for 60-70 minutes.
 
 Screenshots are fallback or supplemental evidence, not a hard gate. Do not ask for or wait on screenshots if public pages, credible reports, or enough other source layers support a forecast. If a screenshot would improve a specific claim, mark that claim provisional or missing and continue with lower confidence.
@@ -79,6 +81,7 @@ Delayed review sources:
 For the previous match, ask:
 
 - Was the score supported by xG and big chances?
+- Did xG and xGOT tell the same story, or did finishing/shot placement change the result?
 - Did a goalkeeper produce an outlier performance?
 - Were red cards, early goals, penalties, or game-plan collapses decisive?
 - Did the team create box entries and high-quality shots, or only low-value volume?
@@ -91,6 +94,9 @@ Pattern examples:
 - A reputation-heavy favorite can underperform when the actual team sheet removes key chance creation, progression, defensive control, or finishing roles.
 - A favorite with consecutive low-efficiency attacking games should not be treated as due for automatic rebound. Upgrade only if the lineup, roles, or previous-match chance quality show a real route to repair.
 - Split inefficient favorites into low-quality volume and high-quality under-conversion. Keep margin capped for low-quality volume, but allow a rebound scoreline when prior matches show strong xG, big chances, shots on target, repeated box entries, or an opponent with weaker defensive personnel.
+- Split chance creation from finishing execution. xG, big chances, box entries, and cutbacks describe chance creation; xGOT, shot placement, finishing record, and goalkeeper-forcing shots describe conversion quality. Do not downgrade a team only for ordinary buildup if it has a repeatable route to a top finisher or consistent high-xGOT shots.
+- Apply a finishing-edge modifier in knockout matches. A low-volume or average-possession team with an elite finisher, strong shot placement, or high xGOT conversion can keep a stronger advancement path than its buildup quality alone suggests, especially when the opponent must open up after conceding.
+- Separate pressure volume from pressure quality. Corners, crosses, box touches, possession, and total shots are not real domination unless paired with cross completion, shots on target, big chances, xG, xGOT, second-ball recovery, or forced saves.
 - For a reputation-heavy knockout favorite, ask whether its recent possession became clear chances against set defenses. If not, move a regulation draw, extra time, and penalties into the central forecast instead of leaving them as a remote failure mode.
 - An underdog that creates repeatable scoring routes across matches should be upgraded from "can frustrate" to "has a stable goal path." Track set pieces, direct play, crosses to a target forward, transition carries, long shots, and second balls.
 - Separate underdog resistance from underdog scoring. A compact low block, goalkeeper form, or defensive stamina can keep the score close without supporting BTTS. Upgrade underdog goals only when there is a repeatable route: target-forward outlet, set-piece taker, transition carrier, second-ball structure, or opponent-specific defensive gap.
@@ -114,6 +120,7 @@ Before knockout forecasts, run a compact tournament-to-date review instead of so
 - After noticing overconservatism, do not swing back to paper-strength favorites without rechecking key role fitness, starters, and recent chance quality.
 - After a paper-strength favorite fails because it could not break a compact block, do not correct only the specific team. Generalize the rule: reputation, ranking, and market price need proof of chance quality, box occupation, set pieces, bench impact, or transition control before supporting a confident regulation win.
 - After a favored team has failed to score from open play or produced repeated low-quality volume, cap its margin and raise draw risk until there is concrete evidence of chance-creation repair.
+- Do not let historical baggage, past-round narratives, or national-team stereotypes outweigh current execution. Treat them as psychological modifiers only, and reweight quickly after early pressing success, first-goal match-state change, crowd momentum, or visible duel advantage.
 - After a smaller team shows real scoring routes in consecutive tournament matches, give that route independent weight even if market price, reputation, or possession profile still favors the opponent.
 - Strong teams with healthy elite creators/finishers should not be flattened into default draws by climate or opening-round caution alone.
 - Structural or role gaps should usually cap margin first, then raise draw risk; they should not automatically flip the match to an upset.
@@ -187,6 +194,7 @@ Do not force every team into a preferred formation, build-up shape, or possessio
 - Weak or near-peer teams may rationally aim to reach extra time or penalties if their open-play chance creation is limited but their goalkeeper, penalty takers, defensive block, or fatigue profile is competitive.
 - Favorites may avoid high-risk chasing while level, especially early, but should become more aggressive if extra time hurts them more than the opponent or if their bench can change chance creation.
 - Leading teams may protect game state earlier than in group matches; trailing underdogs may open up later, raising late-goal, counterattack, and extra-time variance.
+- Reassess the whole game shape after the first goal. A team with a credible counterattacking finisher or high-quality transition outlet can see its advantage grow nonlinearly once the opponent has to chase.
 - Evaluate extra time separately: bench quality, injury load, recent minutes, age profile, heat, travel, pressing style, and late-game control can move the advancement lean even if the 90-minute score lean stays level.
 - Starter-dependent teams should carry explicit extra-time risk if substitutions have not preserved intensity or chance creation after 70 minutes.
 - Evaluate penalty shootouts explicitly when the match is close: goalkeeper penalty record, penalty-taker availability, set-piece/finisher substitutions, captain/leader presence, fatigue, and recent pressure-game history affect confidence.
