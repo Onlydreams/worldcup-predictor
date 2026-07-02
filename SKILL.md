@@ -97,10 +97,12 @@ Then add short match notes:
 - Do not treat a famous or high-ranked favorite as having automatic knockout-stage penetration. If it has not proven stable chance creation against compact blocks, make regulation draw or narrow win a live branch.
 - Do not group all favorites together; distinguish low-quality possession favorites from teams that repeatedly create big chances, strong xG, and high-value box touches.
 - Do not treat corners, crosses, box touches, or shot count as proof of domination without checking cross quality, shots on target, big chances, xG, and xGOT.
+- Do not let momentum charts override xG, big chances, shots on target, xGOT, and substitution-driven chance quality.
 - Do not equate first-match score with true form; inspect chance quality and opponent collapse.
 - Do not treat FBref, StatsBomb free data, or Understat as real-time sources for current World Cup matches unless current-match coverage was directly verified.
 - Do not overrate friendlies over current tournament data.
 - Do not assume a returning star is fully functional; ask whether they can sprint, press, dribble, or play 60+ minutes.
+- Do not label a benched player as injured or unavailable unless injury/availability reporting confirms it; separate bench, rotation, managed minutes, and true absence.
 - Do not assume a coaching change creates instant defensive cohesion.
 - Do not treat public player criticism of federation chaos, leaks, rushed rebuilds, or lack of squad continuity as ordinary venting; it is a high-weight cohesion signal, while specific corruption or financial claims still need separate verification.
 - Do not assume a favorite will fix repeated chance-creation problems just because it has famous attackers or needs a result; require evidence from lineup, role, or chance-quality changes.

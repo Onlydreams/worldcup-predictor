@@ -40,6 +40,8 @@ Predicted lineups from Sofascore, FotMob, other apps, or user screenshots can in
 
 Screenshots are fallback or supplemental evidence, not a hard gate. Do not ask for or wait on screenshots if public pages, credible reports, or enough other source layers support a forecast. If a screenshot would improve a specific claim, mark that claim provisional or missing and continue with lower confidence.
 
+For live matches, keep source types separate: confirmed page data, user-observed broadcast details, and tactical inference. Do not present a broadcast observation or inference as page-confirmed data.
+
 ## Market Reading
 
 - Prefer public web pages for market baselines: Polymarket event/market pages, Stake public odds pages, and major books. Use screenshots only when live page access is unavailable.
@@ -68,6 +70,7 @@ Immediate performance sources:
 
 - Use FotMob, Sofascore, Flashscore, FIFA match centre, or user screenshots for live scores, lineups, substitutions, shots, shots on target, big chances, saves, ratings, and visible xG. If screenshots are absent, continue with readable public data and mark screenshot-only details as missing.
 - Use Sofascore shot xG, player ratings, heatmaps, and event views when available; they are especially useful for distinguishing real pressure from low-value shot volume.
+- Use momentum charts only as pressure context. They should not override xG, big chances, shots on target, xGOT, shot locations, forced saves, or visible substitution effects on chance quality.
 - Use WhoScored or Opta-style event data for tactical questions such as ball progression, repeated turnovers, zone occupation, and whether a midfield disconnect is structural.
 - Do not treat unavailable xG, big chances, shot-quality views, or official lineups as a blocker by itself. For pre-match forecasts, current-fixture xG and big chances do not exist, and official lineups may be unavailable until close to kickoff. Use recent tournament stats, official match-centre basics, credible team news, expected lineup reports, and role/style evidence as fallback.
 - For post-match reviews, try the advanced data sources first. If they are unavailable, still review with the best readable evidence: score timeline, shots, shots on target, possession, cards, substitutions, official match reports, reliable recaps, and market expectation. Mark the missing advanced data and lower confidence in fine-grained chance-quality claims.
@@ -86,6 +89,8 @@ For the previous match, ask:
 - Were red cards, early goals, penalties, or game-plan collapses decisive?
 - Did the team create box entries and high-quality shots, or only low-value volume?
 - Which players had high ratings for repeatable actions: saves, key passes, duels, progressive carries, defensive actions?
+
+For lineups and availability, separate bench, rotation, managed minutes, and true absence. Do not infer injury from a star starting on the bench unless credible injury/availability reporting confirms it.
 
 Pattern examples:
 
@@ -127,6 +132,14 @@ Before knockout forecasts, run a compact tournament-to-date review instead of so
 - Public criticism from core players about rushed federation rebuilds, leaks, squad discontinuity, or instability is a high-weight cohesion signal, not ordinary post-match venting. Downgrade team cohesion, tactical continuity, defensive coordination, and late-game resilience. Keep unverified corruption, payment, or internal-politics claims separate until sourced.
 - If final lineups are unavailable, label the forecast provisional and name the specific lineup triggers that would move the score or winner lean.
 - In post-match review, classify key-event variance separately from model error: early red card, goalkeeper error, VAR reversal, penalty save, injury substitution, or extreme finishing. Explain whether the pre-match read was wrong before the event, or whether the event changed the match state.
+
+## Live Update Rules
+
+- After an early underdog goal, do not overreact to score alone. Check whether the favorite is creating real chances or only territorial pressure, and whether the underdog still has a second-goal route.
+- At halftime, update from xG, big chances, shots on target, substitution needs, and whether the favorite has obvious bench fixes. Do not anchor to pre-match market strength if current chance quality contradicts it.
+- Around 60 minutes, substitutions become a major model signal. Upgrade or downgrade only when they change chance quality: crossing quality, one-v-one threat, central occupation, pressing, second-ball recovery, or rest-defense exposure.
+- After an equalizer, reassess both sides' risk appetite. An underdog may switch from protecting a lead to protecting extra time, while a favorite may choose between controlled pressure and high-risk chasing.
+- After a favorite takes a late lead, the main danger often shifts from open-play control to set pieces, second balls, direct play, chaotic box entries, and transition exposure.
 
 ## Cards And Referee Risk
 
@@ -170,6 +183,7 @@ Do not force every team into a preferred formation, build-up shape, or possessio
 - Injuries or role changes remove the team's main progression, creation, or finishing route.
 - Recent coaching change, abrupt youth rebuild, public leaks, or player-confirmed lack of shared playing time undermines coordinated pressing, defensive spacing, set-piece assignments, and late-game resilience.
 - Aggressive attacking choices leave repeated high-value counterattacks.
+- Heavy favorite pressure can weaken rest defense. Adding attackers may increase comeback probability and concession risk at the same time.
 - The team needs to chase but lacks tools to create better chances.
 - The team is starter-dependent and its bench cannot protect leads, change attacking rhythm, or handle extra-time intensity.
 
@@ -244,6 +258,9 @@ What was right:
 
 What was wrong:
 - ...
+
+Verdict category:
+- Result and process both right / result right but process partly wrong / result wrong but process defensible.
 
 Model update:
 - Increase/decrease weight for ...
