@@ -34,7 +34,7 @@ Mark uncertain facts clearly: confirmed, reported, inferred, or user-supplied.
 
 Access discipline matters as much as source quality. If a site returns 403, requires heavy JavaScript, blocks automated access, or only appears through a user screenshot, say exactly that. Do not promote a source into "used" unless the relevant match page, API output, or screenshot was actually read.
 
-If the user says relevant match pages are already open, first enumerate or inspect the available pages/tabs and confirm the exact match/event page. Use the already-open DOM or screenshot when it is readable; choose an API call or script only after confirming the page is unavailable, incomplete, or too noisy. Do not write a scraper before checking what the user has already opened.
+If the user says relevant match pages are already open, or the task concerns live data, technical stats, lineups, odds, substitutions, or post-match review from likely open pages, first enumerate or inspect the available pages/tabs and confirm the exact match/event page. Use the already-open DOM or screenshot when it is readable; choose a new page, web search, API call, or script only after confirming the page is unavailable, incomplete, or too noisy. Do not guess event URLs or write a scraper before checking what the user has already opened. If browser automation opens temporary pages, preserve user-opened pages and clean up only the temporary pages where the tool supports it.
 
 Predicted lineups from Sofascore, FotMob, other apps, or user screenshots can inform the pre-match personnel layer, but label them as predicted, not official. After reading a predicted lineup, list the specific lineup triggers that would change the forecast: main finisher starts or sits, defensive organizer returns, ball-progressor fitness, goalkeeper change, or whether a key player is fit for 60-70 minutes.
 
@@ -99,9 +99,11 @@ Pattern examples:
 - A reputation-heavy favorite can underperform when the actual team sheet removes key chance creation, progression, defensive control, or finishing roles.
 - A favorite with consecutive low-efficiency attacking games should not be treated as due for automatic rebound. Upgrade only if the lineup, roles, or previous-match chance quality show a real route to repair.
 - Split inefficient favorites into low-quality volume and high-quality under-conversion. Keep margin capped for low-quality volume, but allow a rebound scoreline when prior matches show strong xG, big chances, shots on target, repeated box entries, or an opponent with weaker defensive personnel.
+- In knockout matches, high-quality under-conversion by a favorite raises both comeback potential and accident risk. If a team has clear xG, big chances, box touches, and forced saves but fails to score early, keep its chance-creation rating high while raising the risk of a counterattack goal, set-piece goal, extra time, or late chaos.
 - Split chance creation from finishing execution. xG, big chances, box entries, and cutbacks describe chance creation; xGOT, shot placement, finishing record, and goalkeeper-forcing shots describe conversion quality. Do not downgrade a team only for ordinary buildup if it has a repeatable route to a top finisher or consistent high-xGOT shots.
 - Apply a finishing-edge modifier in knockout matches. A low-volume or average-possession team with an elite finisher, strong shot placement, or high xGOT conversion can keep a stronger advancement path than its buildup quality alone suggests, especially when the opponent must open up after conceding.
 - Separate pressure volume from pressure quality. Corners, crosses, box touches, possession, and total shots are not real domination unless paired with cross completion, shots on target, big chances, xG, xGOT, second-ball recovery, or forced saves.
+- Separate sterile possession from real dominance. Upgrade possession teams when xG, big chances, shots on target, corners, box touches, and opponent shots on target all support the same story; do not call it real dominance from possession alone.
 - For a reputation-heavy knockout favorite, ask whether its recent possession became clear chances against set defenses. If not, move a regulation draw, extra time, and penalties into the central forecast instead of leaving them as a remote failure mode.
 - An underdog that creates repeatable scoring routes across matches should be upgraded from "can frustrate" to "has a stable goal path." Track set pieces, direct play, crosses to a target forward, transition carries, long shots, and second balls.
 - Separate underdog resistance from underdog scoring. A compact low block, goalkeeper form, or defensive stamina can keep the score close without supporting BTTS. Upgrade underdog goals only when there is a repeatable route: target-forward outlet, set-piece taker, transition carrier, second-ball structure, or opponent-specific defensive gap.
@@ -138,8 +140,21 @@ Before knockout forecasts, run a compact tournament-to-date review instead of so
 - After an early underdog goal, do not overreact to score alone. Check whether the favorite is creating real chances or only territorial pressure, and whether the underdog still has a second-goal route.
 - At halftime, update from xG, big chances, shots on target, substitution needs, and whether the favorite has obvious bench fixes. Do not anchor to pre-match market strength if current chance quality contradicts it.
 - Around 60 minutes, substitutions become a major model signal. Upgrade or downgrade only when they change chance quality: crossing quality, one-v-one threat, central occupation, pressing, second-ball recovery, or rest-defense exposure.
+- Interpret substitutions structurally, not as a player list. Identify who now progresses the ball, who occupies the box, who protects second balls, who supplies width, and what counterattack or rest-defense risk the change creates.
+- When a favorite removes multiple central creators or progressors while chasing, expect more direct play, wide attacks, crosses, and second balls. This can increase goal probability through box numbers while lowering midfield control and raising late transition risk.
 - After an equalizer, reassess both sides' risk appetite. An underdog may switch from protecting a lead to protecting extra time, while a favorite may choose between controlled pressure and high-risk chasing.
 - After a favorite takes a late lead, the main danger often shifts from open-play control to set pieces, second balls, direct play, chaotic box entries, and transition exposure.
+- After late stoppage-time goals or VAR reviews, distinguish process from outcome. A disallowed equalizer may still reveal a real weakness in box control, aerial defense, second-ball coverage, or late-game decision-making.
+
+## VAR And Offside Review
+
+For controversial goals, explain the decision as a rules chain rather than only accepting or rejecting the outcome.
+
+- Separate physical fact from rules judgment: who touched the ball, when the touch occurred, where players were positioned, whether an offside-position player became involved, and whether a defender's touch was a deliberate play or a deflection/rebound/save.
+- For offside, identify the last attacking teammate touch that resets the offside line. A slight attacking touch confirmed by connected-ball technology, audio, or video can create a new offside moment even if it is difficult to see on broadcast.
+- A defender's touch does not automatically reset offside. Reset only when the defender deliberately plays the ball with enough control, sight, time, and body coordination. Passive deflections, instinctive blocks, rebounds, and saves do not "clean" an attacker who was already in an offside position.
+- If a player appears to run back onside before receiving or playing the ball, still evaluate the position at the teammate's last touch, not only the later receiving moment.
+- Treat social clips as hypotheses. Verify the rule chain with official event logs, credible recaps, IFAB Law 11, and available technology explanations. Mark which facts are confirmed by technology, which are visible on video, and which are referee interpretation.
 
 ## Cards And Referee Risk
 
