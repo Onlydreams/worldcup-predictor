@@ -89,6 +89,7 @@ For the previous match, ask:
 - Were red cards, early goals, penalties, or game-plan collapses decisive?
 - Did the team create box entries and high-quality shots, or only low-value volume?
 - Which players had high ratings for repeatable actions: saves, key passes, duels, progressive carries, defensive actions?
+- Did the team look structurally stable under the opponent it faced, or did loose passing, weak rest defense, repeated turnovers, or soft defensive pressure let an inferior opponent generate too many shots or shots on target?
 
 For lineups and availability, separate bench, rotation, managed minutes, and true absence. Do not infer injury from a star starting on the bench unless credible injury/availability reporting confirms it.
 
@@ -104,6 +105,8 @@ Pattern examples:
 - Apply a finishing-edge modifier in knockout matches. A low-volume or average-possession team with an elite finisher, strong shot placement, or high xGOT conversion can keep a stronger advancement path than its buildup quality alone suggests, especially when the opponent must open up after conceding.
 - Separate pressure volume from pressure quality. Corners, crosses, box touches, possession, and total shots are not real domination unless paired with cross completion, shots on target, big chances, xG, xGOT, second-ball recovery, or forced saves.
 - Separate sterile possession from real dominance. Upgrade possession teams when xG, big chances, shots on target, corners, box touches, and opponent shots on target all support the same story; do not call it real dominance from possession alone.
+- Separate statistical superiority from team state. A favorite can win the xG battle and still be in poor form if role players are misfiring, passing is careless, rest defense is loose, or a much weaker opponent produces repeated shots on target and transition entries.
+- Separate black-horse status from geography and historical brand. A non-traditional power that has repeated major-tournament knockout success, won a continental title, or shown multi-cycle defensive and transition stability should be treated as an established strong team until current form says otherwise.
 - For a reputation-heavy knockout favorite, ask whether its recent possession became clear chances against set defenses. If not, move a regulation draw, extra time, and penalties into the central forecast instead of leaving them as a remote failure mode.
 - An underdog that creates repeatable scoring routes across matches should be upgraded from "can frustrate" to "has a stable goal path." Track set pieces, direct play, crosses to a target forward, transition carries, long shots, and second balls.
 - Separate underdog resistance from underdog scoring. A compact low block, goalkeeper form, or defensive stamina can keep the score close without supporting BTTS. Upgrade underdog goals only when there is a repeatable route: target-forward outlet, set-piece taker, transition carrier, second-ball structure, or opponent-specific defensive gap.
@@ -114,8 +117,10 @@ Before knockout forecasts, run a compact tournament-to-date review instead of so
 
 - Separate external media evaluation from your own read. Media consensus is calibration, not the conclusion.
 - Review actual match content: chance quality, opponent quality, game-state effects, defensive concessions, set pieces, transition exposure, and whether scorelines flattered or hid the team.
+- Review team status in the current cycle. Do not use "black horse" as shorthand for countries outside the classic elite if recent World Cup, continental tournament, and qualifying evidence shows repeatable high-level performance.
 - Review bench and integration: whether substitutes changed the game, protected a lead, restored chance creation, or kept defensive structure after 70 minutes.
 - Review core state: whether the main finisher, creator, ball progressor, defensive organizer, and goalkeeper look fit enough for knockout tempo and potential extra time.
+- Review opponent strength already faced. Do not grant a favorite a contender-level ceiling until it has either handled a credible high-pressure opponent or shown stable ball security, defensive concentration, and chance creation against the opponents it has faced.
 - Review knockout-specific risk: extra-time stamina, penalty profile, yellow-card suspension pressure, referee/card exposure, and whether the team has a plan B when its main route is blocked.
 
 ## Calibration Discipline
@@ -127,8 +132,11 @@ Before knockout forecasts, run a compact tournament-to-date review instead of so
 - After noticing overconservatism, do not swing back to paper-strength favorites without rechecking key role fitness, starters, and recent chance quality.
 - After a paper-strength favorite fails because it could not break a compact block, do not correct only the specific team. Generalize the rule: reputation, ranking, and market price need proof of chance quality, box occupation, set pieces, bench impact, or transition control before supporting a confident regulation win.
 - After a favored team has failed to score from open play or produced repeated low-quality volume, cap its margin and raise draw risk until there is concrete evidence of chance-creation repair.
+- After a favorite advances while looking disjointed, downgrade future regulation-win confidence even if aggregate xG was strong. Treat loose passing, poor defensive concentration, misfiring key roles, and too many opponent shots on target as form warnings, especially if the opponent has not been an elite stress test.
+- When a narrow score is driven by an outstanding goalkeeper performance against clear xG, big chances, and shots-on-target dominance, record it as finishing or goalkeeper variance rather than an attacking-process failure.
 - Do not let historical baggage, past-round narratives, or national-team stereotypes outweigh current execution. Treat them as psychological modifiers only, and reweight quickly after early pressing success, first-goal match-state change, crowd momentum, or visible duel advantage.
 - After a smaller team shows real scoring routes in consecutive tournament matches, give that route independent weight even if market price, reputation, or possession profile still favors the opponent.
+- After a team sustains success across a World Cup run, continental title, and current knockout performance, move it from "black horse" framing into the stable-team bucket unless player availability or recent execution clearly regresses.
 - Strong teams with healthy elite creators/finishers should not be flattened into default draws by climate or opening-round caution alone.
 - Structural or role gaps should usually cap margin first, then raise draw risk; they should not automatically flip the match to an upset.
 - Public criticism from core players about rushed federation rebuilds, leaks, squad discontinuity, or instability is a high-weight cohesion signal, not ordinary post-match venting. Downgrade team cohesion, tactical continuity, defensive coordination, and late-game resilience. Keep unverified corruption, payment, or internal-politics claims separate until sourced.
@@ -194,6 +202,7 @@ Do not force every team into a preferred formation, build-up shape, or possessio
 
 - Possession or pressure produces few clear chances.
 - A favorite's main edge is mostly reputation, ranking, or possession, while recent matches show few big chances, weak box occupation, or low-quality shot volume.
+- A favorite has not faced a strong opponent yet but already shows careless passing, loose rest defense, weak defensive pressure, or dependence on one or two players to rescue poor team structure.
 - Key creators occupy the same zones and reduce each other's influence.
 - Injuries or role changes remove the team's main progression, creation, or finishing route.
 - Recent coaching change, abrupt youth rebuild, public leaks, or player-confirmed lack of shared playing time undermines coordinated pressing, defensive spacing, set-piece assignments, and late-game resilience.
