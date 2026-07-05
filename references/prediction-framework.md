@@ -53,6 +53,7 @@ For live matches, keep source types separate: confirmed page data, user-observed
 - For Polymarket public pages, read visible market text first: moneyline, draw, spreads, totals, BTTS, first-team-to-score, displayed volume, and any visible probability/cent price. Clean duplicated or concatenated page text before using it.
 - For Stake public pages, use the direct World Cup soccer URL first. If it blocks access, requires heavy JavaScript, redirects away, or shows no normal 1X2 fixture odds, record Stake as unavailable for that match and move on. Do not keep retrying Stake, do not infer that the whole market layer is unavailable, and do not invent odds.
 - If Stake's generic soccer page redirects to casino/home, do not mark Stake unavailable until the direct World Cup URL `https://stake.com/zh/sports/soccer/international/world-cup` has been tried.
+- On Stake, distinguish the complete fixture row from top-page "large bet" or promoted cards. Large-bet cards can repeat the same fixture and expose only one side of the price; use the fixture list row that shows all three normal 90-minute 1X2 decimal prices before setting the market baseline.
 - Separate normal 1X2 decimal odds from signup offers, free bets, odds boosts, and acquisition promos. Promotional prices are not a market baseline.
 - Do not claim Polymarket orderbook depth, bid/ask spread, midpoint, or token-level detail unless an API/orderbook source was actually read. Public page text is enough for baseline probability, not precise execution quality.
 - Convert odds/prices into rough probabilities, but avoid false precision when using screenshots or noisy page text.
@@ -134,6 +135,8 @@ Before knockout forecasts, run a compact tournament-to-date review instead of so
 - After a favored team has failed to score from open play or produced repeated low-quality volume, cap its margin and raise draw risk until there is concrete evidence of chance-creation repair.
 - After a favorite advances while looking disjointed, downgrade future regulation-win confidence even if aggregate xG was strong. Treat loose passing, poor defensive concentration, misfiring key roles, and too many opponent shots on target as form warnings, especially if the opponent has not been an elite stress test.
 - When a narrow score is driven by an outstanding goalkeeper performance against clear xG, big chances, and shots-on-target dominance, record it as finishing or goalkeeper variance rather than an attacking-process failure.
+- After post-match reviews show that corners, box touches, or territorial pressure did not create goals, reduce the weight of pressure-only indicators until they are paired with xG, big chances, shots on target, xGOT, or forced saves.
+- After a favorite controls possession or wins xG but advances narrowly through a penalty, goalkeeper performance, or poor finishing from open play, keep the favorite's advancement quality separate from its regulation-margin quality. Do not automatically upgrade the next forecast to a comfortable win.
 - Do not let historical baggage, past-round narratives, or national-team stereotypes outweigh current execution. Treat them as psychological modifiers only, and reweight quickly after early pressing success, first-goal match-state change, crowd momentum, or visible duel advantage.
 - After a smaller team shows real scoring routes in consecutive tournament matches, give that route independent weight even if market price, reputation, or possession profile still favors the opponent.
 - After a team sustains success across a World Cup run, continental title, and current knockout performance, move it from "black horse" framing into the stable-team bucket unless player availability or recent execution clearly regresses.
@@ -172,6 +175,8 @@ Use a range, not false precision. A card forecast should include a main count, a
 - Adjust for knockout intensity, rivalry, elimination pressure, and whether one team is likely to defend long stretches or make repeated transition-stopping fouls.
 - Identify team-specific foul points: fullbacks isolated against wingers, midfielders chasing faster carriers, aerial duel mismatches, late recovery tackles, and repeated tactical fouls after turnovers.
 - Account for match state: early goal, trailing favorite, protecting a lead, extra-time fatigue, and late desperation can move cards above the baseline.
+- Do not equate foul volume with yellow-card volume. A referee who tolerates contact, dissent, or off-ball disruption can produce a match that is more fragmented and physical but still below the card-count model.
+- For teams that rely on high-contact disruption, tactical fouls, or small off-ball actions, raise the foul/control-risk read first. Raise the card forecast only when the referee profile, early threshold, rivalry pressure, or repeated transition stops support it.
 - Keep suspension and prior red-card history separate from moral judgment. Use it only when it affects player behavior, referee attention, or lineup risk.
 - Output example: "cards main 5, reasonable range 4-6; red-card risk medium if Team B's fullback is repeatedly isolated."
 
@@ -238,6 +243,7 @@ Do not force every team into a preferred formation, build-up shape, or possessio
 - Evaluate penalty shootouts explicitly when the match is close: goalkeeper penalty record, penalty-taker availability, set-piece/finisher substitutions, captain/leader presence, fatigue, and recent pressure-game history affect confidence.
 - When the favorite's open-play chance creation is unproven, do not write "favorite advances" without a regulation draw branch. Use formulations such as "1-1 after 90; favorite slight edge in extra time" or "favorite stronger on paper, but penalty path is a major live branch."
 - When market data is available, distinguish 90-minute 1X2, to-advance markets, extra-time/penalty props, and totals. Do not mix a regulation draw price with an advancement probability.
+- Treat low 90-minute draw odds as a main knockout signal, not a footnote. If the 1X2 market prices the draw close to one or both teams, move extra time and penalties into the central forecast even when one team remains the better advancement lean.
 - Output knockout forecasts as regulation score plus advancement lean, for example: "1-1 after 90; Team A advances after extra time" or "0-0 after 90; Team B advances on penalties."
 
 ## Confidence Labels
