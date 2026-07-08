@@ -53,6 +53,8 @@ For live matches, keep source types separate: confirmed page data, user-observed
 - For Polymarket public pages, read visible market text first: moneyline, draw, spreads, totals, BTTS, first-team-to-score, displayed volume, and any visible probability/cent price. Clean duplicated or concatenated page text before using it.
 - For Stake public pages, use the direct World Cup soccer URL first. If it blocks access, requires heavy JavaScript, redirects away, or shows no normal 1X2 fixture odds, record Stake as unavailable for that match and move on. Do not keep retrying Stake, do not infer that the whole market layer is unavailable, and do not invent odds.
 - If Stake's generic soccer page redirects to casino/home, do not mark Stake unavailable until the direct World Cup URL `https://stake.com/zh/sports/soccer/international/world-cup` has been tried.
+- If Stake's `/world-cup/all` variant shows no results or an incomplete list, retry the base World Cup URL before marking Stake unavailable. Record the exact page state: empty list, redirected, blocked, stale fixtures, or readable fixture rows.
+- On Stake, record the active market selector. Use `获胜盘` or normal win/draw/win for 90-minute 1X2; use `让分盘` only for handicap reads, `总分盘` for totals, and `晋级` or equivalent markets only for advancement. Do not mix these markets in one probability line.
 - On Stake, distinguish the complete fixture row from top-page "large bet" or promoted cards. Large-bet cards can repeat the same fixture and expose only one side of the price; use the fixture list row that shows all three normal 90-minute 1X2 decimal prices before setting the market baseline.
 - Separate normal 1X2 decimal odds from signup offers, free bets, odds boosts, and acquisition promos. Promotional prices are not a market baseline.
 - Do not claim Polymarket orderbook depth, bid/ask spread, midpoint, or token-level detail unless an API/orderbook source was actually read. Public page text is enough for baseline probability, not precise execution quality.
@@ -94,6 +96,18 @@ For the previous match, ask:
 
 For lineups and availability, separate bench, rotation, managed minutes, and true absence. Do not infer injury from a star starting on the bench unless credible injury/availability reporting confirms it.
 
+## Fast-Pass And Lineup Revision
+
+When the user explicitly asks for an immediate first pass, whole-round forecast, or rough prediction, do not over-invest in full verification before answering. Produce a compact provisional read, then state what is missing.
+
+- Label it clearly as a rough or provisional pre-match forecast.
+- For knockout batches, still split 90-minute score, advancement lean, and extra-time or penalty risk.
+- If cards are requested, give a main card count plus range even in the fast pass, but lower confidence when referee data is missing.
+- Preserve the source-layer structure: market, data, news, context, and style. Mark unchecked layers rather than pretending they were read.
+- Name the triggers for a later update: official lineup, key role starting or sitting, market move, injury/suspension report, referee assignment, weather, or venue shift.
+- If a later lineup, odds screenshot, or live page update arrives, update the affected layer first. Do not rerun every layer unless the stale layer could change the conclusion.
+- A missing star, creator, or transition partner lowers that route's weight but does not erase the team's scoring path. Recheck set pieces, secondary runners, defender targets, long shots, second balls, goalkeeper variance, penalties, and bench routes before moving to a clean-sheet forecast.
+
 Pattern examples:
 
 - A 0-0 with high shot volume and many goalkeeper saves can show real pressure, but finishing variance or a goalkeeper outlier may break market expectation.
@@ -111,6 +125,8 @@ Pattern examples:
 - For a reputation-heavy knockout favorite, ask whether its recent possession became clear chances against set defenses. If not, move a regulation draw, extra time, and penalties into the central forecast instead of leaving them as a remote failure mode.
 - An underdog that creates repeatable scoring routes across matches should be upgraded from "can frustrate" to "has a stable goal path." Track set pieces, direct play, crosses to a target forward, transition carries, long shots, and second balls.
 - Separate underdog resistance from underdog scoring. A compact low block, goalkeeper form, or defensive stamina can keep the score close without supporting BTTS. Upgrade underdog goals only when there is a repeatable route: target-forward outlet, set-piece taker, transition carrier, second-ball structure, or opponent-specific defensive gap.
+- Do not reduce an underdog's goal path to one star pairing. If the main transition carrier or partner is absent, still check set pieces, defender runs, secondary wide outlets, rebounds, penalty-box chaos, late bench speed, and opponent concentration errors.
+- In chaotic knockout scores, separate the pre-match process from key-event variance. Early goals, saved penalties, disallowed goals, goalkeeper outliers, and stoppage-time winners can make a sound xG or chance-quality read produce the wrong exact score.
 
 ## Knockout Preparation Review
 
@@ -145,6 +161,7 @@ Before knockout forecasts, run a compact tournament-to-date review instead of so
 - Public criticism from core players about rushed federation rebuilds, leaks, squad discontinuity, or instability is a high-weight cohesion signal, not ordinary post-match venting. Downgrade team cohesion, tactical continuity, defensive coordination, and late-game resilience. Keep unverified corruption, payment, or internal-politics claims separate until sourced.
 - If final lineups are unavailable, label the forecast provisional and name the specific lineup triggers that would move the score or winner lean.
 - In post-match review, classify key-event variance separately from model error: early red card, goalkeeper error, VAR reversal, penalty save, injury substitution, or extreme finishing. Explain whether the pre-match read was wrong before the event, or whether the event changed the match state.
+- When a favorite generates strong xG, big chances, shots on target, and territorial pressure but concedes through low-frequency routes, keep the chance-creation process mostly intact while updating the conceded-goal routes. The correction may be "underdog scoring route was underweighted," not "favorite was overrated."
 
 ## Live Update Rules
 
@@ -167,16 +184,31 @@ For controversial goals, explain the decision as a rules chain rather than only 
 - If a player appears to run back onside before receiving or playing the ball, still evaluate the position at the teammate's last touch, not only the later receiving moment.
 - Treat social clips as hypotheses. Verify the rule chain with official event logs, credible recaps, IFAB Law 11, and available technology explanations. Mark which facts are confirmed by technology, which are visible on video, and which are referee interpretation.
 
+## Referee Controversy And Social Reaction
+
+When asked about post-match referee discourse, social-media complaints, or claims of bias, separate evidence levels before concluding.
+
+- Event-log confirmed: goals, cards, fouls, penalties, VAR checks, substitutions, injury time, and official disciplinary records.
+- Video-visible but judgment-dependent: contact intensity, holding, obstruction, advantage, off-ball blocking, simulation, dissent, and whether a defender had control.
+- Rule-chain claims: offside phase, deliberate play versus deflection, handball position, penalty-area contact, DOGSO or SPA threshold, and VAR clear-and-obvious reviewability.
+- Sentiment and allegation: fan outrage, coach/player quotes, federation statements, conspiracy claims, or "FIFA bias" narratives. Treat these as context or hypotheses unless a credible report substantiates them.
+- In the output, name the disputed incidents and state whether each is confirmed fact, visible interpretation, or unsupported allegation. Do not convert social-media volume into proof of referee intent.
+
 ## Cards And Referee Risk
 
 Use a range, not false precision. A card forecast should include a main count, a reasonable range, and the main red-card trigger.
 
 - Start with referee profile when available: yellow-card average, red-card frequency, penalty frequency, tolerance for dissent, tactical fouls, and advantage play.
+- Separate tournament-wide referee environment from single-match referee behavior. Compare multiple matches before saying the tournament is loose or strict: contact tolerance, dissent tolerance, dangerous-tackle enforcement, VAR intervention, foul volume, yellow-card volume, red-card triggers, and whether cards skew toward the trailing or protesting team.
 - Adjust for knockout intensity, rivalry, elimination pressure, and whether one team is likely to defend long stretches or make repeated transition-stopping fouls.
 - Identify team-specific foul points: fullbacks isolated against wingers, midfielders chasing faster carriers, aerial duel mismatches, late recovery tackles, and repeated tactical fouls after turnovers.
 - Account for match state: early goal, trailing favorite, protecting a lead, extra-time fatigue, and late desperation can move cards above the baseline.
 - Do not equate foul volume with yellow-card volume. A referee who tolerates contact, dissent, or off-ball disruption can produce a match that is more fragmented and physical but still below the card-count model.
 - For teams that rely on high-contact disruption, tactical fouls, or small off-ball actions, raise the foul/control-risk read first. Raise the card forecast only when the referee profile, early threshold, rivalry pressure, or repeated transition stops support it.
+- Distinguish total-card forecast from team-card distribution. A tolerant referee can allow many fouls with a low total, while dissent, chasing state, or repeated transition stops can skew cards toward one team even when total cards stay near the expected range.
+- When post-match comments claim a team "committed many small fouls but avoided cards," treat that as a contact-threshold signal, not automatic proof of bias. Verify foul counts, advantage calls, repeated infringement warnings, dissent cards, tactical stops, and whether the opponent's cards came from protests or chasing-state fouls.
+- For South American teams, use a style modifier rather than a stereotype. Upgrade foul/control-risk when the current team shows high-contact duels, tactical fouls, off-ball blocks, set-piece wrestling, game-management delays, or referee-pressure behavior. Do not automatically upgrade yellow cards unless the referee profile and early threshold punish that behavior.
+- If a high-contact team gains from a permissive referee, reflect it in the match model: more broken rhythm, more opponent frustration, higher protest-card risk for the opponent, and lower clean-possession quality. This can matter even when the total-card forecast stays moderate.
 - Keep suspension and prior red-card history separate from moral judgment. Use it only when it affects player behavior, referee attention, or lineup risk.
 - Output example: "cards main 5, reasonable range 4-6; red-card risk medium if Team B's fullback is repeatedly isolated."
 
@@ -241,6 +273,7 @@ Do not force every team into a preferred formation, build-up shape, or possessio
 - Evaluate extra time separately: bench quality, injury load, recent minutes, age profile, heat, travel, pressing style, and late-game control can move the advancement lean even if the 90-minute score lean stays level.
 - Starter-dependent teams should carry explicit extra-time risk if substitutions have not preserved intensity or chance creation after 70 minutes.
 - Evaluate penalty shootouts explicitly when the match is close: goalkeeper penalty record, penalty-taker availability, set-piece/finisher substitutions, captain/leader presence, fatigue, and recent pressure-game history affect confidence.
+- Treat the shootout as its own matchup. A slight 90-minute or open-play edge does not automatically become a penalty edge; goalkeeper penalty profile, taker depth, late substitutions, captain/leader presence, fatigue, and recent pressure history can flip advancement confidence.
 - When the favorite's open-play chance creation is unproven, do not write "favorite advances" without a regulation draw branch. Use formulations such as "1-1 after 90; favorite slight edge in extra time" or "favorite stronger on paper, but penalty path is a major live branch."
 - When market data is available, distinguish 90-minute 1X2, to-advance markets, extra-time/penalty props, and totals. Do not mix a regulation draw price with an advancement probability.
 - Treat low 90-minute draw odds as a main knockout signal, not a footnote. If the 1X2 market prices the draw close to one or both teams, move extra time and penalties into the central forecast even when one team remains the better advancement lean.

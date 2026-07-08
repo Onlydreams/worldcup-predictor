@@ -35,15 +35,17 @@ Treat advanced match data as high value but not always available. In pre-match f
 
 User screenshots are fallback or supplemental inputs, not required inputs. Do not block a forecast waiting for screenshots when public pages, credible reports, or enough layer evidence are available; mark screenshot-dependent details as missing or provisional instead.
 
+If the user explicitly asks for a quick first pass, "one round" forecast, or rough forecast before deeper verification, answer immediately with a clearly provisional forecast instead of blocking on full source collection. Still label missing layers and name the lineup, market, or news triggers that would change the prediction.
+
 ## Market Lookup Defaults
 
 For World Cup match odds, check dedicated market pages before generic search:
 
 1. Open the Polymarket World Cup games page, such as `https://polymarket.com/zh/sports/world-cup/games`, and read visible moneyline/draw prices for the relevant fixtures.
-2. Open the Stake World Cup soccer page directly: `https://stake.com/zh/sports/soccer/international/world-cup`, and read normal 1X2 decimal odds when the fixture is visible.
+2. Open the Stake World Cup soccer page directly: `https://stake.com/zh/sports/soccer/international/world-cup`, and read normal 1X2 decimal odds when the fixture is visible. Confirm the active market is normal win/draw/win, not handicap, totals, advancement, or a top-page large-bet card.
 3. If Polymarket and Stake both lack readable fixture odds, use major public books, odds aggregators, or user-supplied screenshots as supplemental market input.
 
-Do not conclude that market odds are unavailable from generic web search alone. Do not rely on Polymarket Gamma API team-name search as the first pass; it can return unrelated markets or miss sport/game aggregation pages. If Stake blocks access, requires heavy JavaScript, redirects away, or shows no normal 1X2 fixture odds, mark Stake unavailable for that match and move on instead of retrying repeatedly. Ignore signup promos, free-bet boosts, and "50/1" style acquisition offers when setting a normal market baseline.
+Do not conclude that market odds are unavailable from generic web search alone. Do not rely on Polymarket Gamma API team-name search as the first pass; it can return unrelated markets or miss sport/game aggregation pages. If Stake blocks access, requires heavy JavaScript, redirects away, or shows no normal 1X2 fixture odds after trying the direct World Cup page, mark Stake unavailable for that match and move on instead of retrying repeatedly. Ignore signup promos, free-bet boosts, and "50/1" style acquisition offers when setting a normal market baseline.
 
 ## Forecast Workflow
 
@@ -97,6 +99,7 @@ Then add short match notes:
 - Do not treat a famous or high-ranked favorite as having automatic knockout-stage penetration. If it has not proven stable chance creation against compact blocks, make regulation draw or narrow win a live branch.
 - Do not group all favorites together; distinguish low-quality possession favorites from teams that repeatedly create big chances, strong xG, and high-value box touches.
 - Do not label a team as a black horse only because it is outside the traditional Europe/South America elite; recent major-tournament runs, continental titles, and repeated knockout control can make it a stable strong team.
+- Do not turn confederation or region into a stereotype. South American teams may deserve higher foul/control-risk only when current tournament evidence, player roles, referee tolerance, and style matchup show repeated high-contact disruption, tactical fouls, off-ball actions, or protest management.
 - Do not treat corners, crosses, box touches, or shot count as proof of domination without checking cross quality, shots on target, big chances, xG, and xGOT.
 - Do not let momentum charts override xG, big chances, shots on target, xGOT, and substitution-driven chance quality.
 - Do not equate first-match score with true form; inspect chance quality and opponent collapse.
@@ -122,5 +125,6 @@ Then add short match notes:
 - Do not convert a co-host or regional venue into full home advantage without checking travel, crowd mix, climate, stadium familiarity, and pressure.
 - Do not convert altitude into a one-way home edge without checking both teams' altitude background, domestic venues, player acclimatization, travel timing, and whether the edge is physiological or mostly crowd/stadium familiarity.
 - Do not let historical narratives or knockout baggage outweigh current execution, early pressure, home/crowd momentum, and match state after an early goal.
+- Do not call a tournament's refereeing "loose" or "strict" from one controversial match. Compare contact tolerance, dissent tolerance, dangerous-tackle enforcement, VAR intervention, foul volume, yellow-card volume, red-card triggers, and team-card skew across matches.
 
 For detailed weighting, confidence rules, and review templates, read `references/prediction-framework.md`.
