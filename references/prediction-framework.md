@@ -42,6 +42,8 @@ Screenshots are fallback or supplemental evidence, not a hard gate. Do not ask f
 
 For live matches, keep source types separate: confirmed page data, user-observed broadcast details, and tactical inference. Do not present a broadcast observation or inference as page-confirmed data.
 
+For substitutions, use the player names in a readable event log or lineup as the authority. Do not identify a player from a shirt number or memory when that named source is available.
+
 ## Market Reading
 
 - Prefer public web pages for market baselines: Polymarket event/market pages, Stake public odds pages, and major books. Use screenshots only when live page access is unavailable.
@@ -169,6 +171,7 @@ Before knockout forecasts, run a compact tournament-to-date review instead of so
 - At halftime, update from xG, big chances, shots on target, substitution needs, and whether the favorite has obvious bench fixes. Do not anchor to pre-match market strength if current chance quality contradicts it.
 - Around 60 minutes, substitutions become a major model signal. Upgrade or downgrade only when they change chance quality: crossing quality, one-v-one threat, central occupation, pressing, second-ball recovery, or rest-defense exposure.
 - Interpret substitutions structurally, not as a player list. Identify who now progresses the ball, who occupies the box, who protects second balls, who supplies width, and what counterattack or rest-defense risk the change creates.
+- Do not name a formation change from substitutions alone. Confirm it from visible positions, heatmaps, build-up structure, or repeated defensive shape; otherwise describe the likely role and risk change as an inference.
 - When a favorite removes multiple central creators or progressors while chasing, expect more direct play, wide attacks, crosses, and second balls. This can increase goal probability through box numbers while lowering midfield control and raising late transition risk.
 - After an equalizer, reassess both sides' risk appetite. An underdog may switch from protecting a lead to protecting extra time, while a favorite may choose between controlled pressure and high-risk chasing.
 - After a favorite takes a late lead, the main danger often shifts from open-play control to set pieces, second balls, direct play, chaotic box entries, and transition exposure.
@@ -204,6 +207,7 @@ Use a range, not false precision. A card forecast should include a main count, a
 - Identify team-specific foul points: fullbacks isolated against wingers, midfielders chasing faster carriers, aerial duel mismatches, late recovery tackles, and repeated tactical fouls after turnovers.
 - Account for match state: early goal, trailing favorite, protecting a lead, extra-time fatigue, and late desperation can move cards above the baseline.
 - Do not equate foul volume with yellow-card volume. A referee who tolerates contact, dissent, or off-ball disruption can produce a match that is more fragmented and physical but still below the card-count model.
+- During live review, lower the remaining-card forecast if the referee has allowed repeated non-dangerous fouls without cards through roughly 55-65 minutes. Keep a high-card branch only when dissent, repeated transition stops, dangerous tackles, or late chasing-state escalation appears.
 - For teams that rely on high-contact disruption, tactical fouls, or small off-ball actions, raise the foul/control-risk read first. Raise the card forecast only when the referee profile, early threshold, rivalry pressure, or repeated transition stops support it.
 - Distinguish total-card forecast from team-card distribution. A tolerant referee can allow many fouls with a low total, while dissent, chasing state, or repeated transition stops can skew cards toward one team even when total cards stay near the expected range.
 - When post-match comments claim a team "committed many small fouls but avoided cards," treat that as a contact-threshold signal, not automatic proof of bias. Verify foul counts, advantage calls, repeated infringement warnings, dissent cards, tactical stops, and whether the opponent's cards came from protests or chasing-state fouls.
