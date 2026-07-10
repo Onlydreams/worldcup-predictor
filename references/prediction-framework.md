@@ -40,6 +40,8 @@ If the user says relevant match pages are already open, or the task concerns liv
 
 Predicted lineups from Sofascore, FotMob, other apps, or user screenshots can inform the pre-match personnel layer, but label them as predicted, not official. After reading a predicted lineup, list the specific lineup triggers that would change the forecast: main finisher starts or sits, defensive organizer returns, ball-progressor fitness, goalkeeper change, or whether a key player is fit for 60-70 minutes.
 
+Distinguish a confirmed starting XI, a warm-up late replacement, and an in-match injury substitution. For a late pre-kickoff replacement, reassess the lost role, replacement fit, and changed route to goal or defensive control; do not assume it uses a normal match substitution or changes the remaining-substitution budget unless the competition rules and event record confirm it.
+
 Screenshots are fallback or supplemental evidence, not a hard gate. Do not ask for or wait on screenshots if public pages, credible reports, or enough other source layers support a forecast. If a screenshot would improve a specific claim, mark that claim provisional or missing and continue with lower confidence.
 
 For live matches, keep source types separate: confirmed page data, user-observed broadcast details, and tactical inference. Do not present a broadcast observation or inference as page-confirmed data.
@@ -176,6 +178,8 @@ Before knockout forecasts, run a compact tournament-to-date review instead of so
 - Around 60 minutes, substitutions become a major model signal. Upgrade or downgrade only when they change chance quality: crossing quality, one-v-one threat, central occupation, pressing, second-ball recovery, or rest-defense exposure.
 - Interpret substitutions structurally, not as a player list. Identify who now progresses the ball, who occupies the box, who protects second balls, who supplies width, and what counterattack or rest-defense risk the change creates.
 - Do not name a formation change from substitutions alone. Confirm it from visible positions, heatmaps, build-up structure, or repeated defensive shape; otherwise describe the likely role and risk change as an inference.
+- Treat an 80th-minute-or-later attacking substitution as an immediate chance-quality signal, not automatically as preparation for extra time. Reassess the next few attacks, especially set pieces, box occupation, and second-ball coverage, before assigning its main purpose.
+- After a goalkeeper replacement, increase short-term variance around shot-stopping, rebound control, crosses, and defensive communication. Do not label the change an injury, or infer its exact effect, unless the event record or reliable reporting confirms it.
 - When a favorite removes multiple central creators or progressors while chasing, expect more direct play, wide attacks, crosses, and second balls. This can increase goal probability through box numbers while lowering midfield control and raising late transition risk.
 - After an equalizer, reassess both sides' risk appetite. An underdog may switch from protecting a lead to protecting extra time, while a favorite may choose between controlled pressure and high-risk chasing.
 - After a favorite takes a late lead, the main danger often shifts from open-play control to set pieces, second balls, direct play, chaotic box entries, and transition exposure.
