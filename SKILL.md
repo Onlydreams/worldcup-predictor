@@ -13,6 +13,20 @@ Predict matches by combining market baseline, verified data, team news, style ma
 
 Use this skill for informational football analysis only. Predictions are uncertain and can be wrong; do not present them as guaranteed outcomes, betting advice, financial advice, or an instruction to wager. When betting markets, odds, or platforms such as Polymarket or Stake are discussed, state that they are evidence inputs for analysis rather than recommendations to bet.
 
+## Task Routing
+
+Classify the request before collecting evidence. Use only the route that fits the user request, and label a limited-evidence answer as provisional.
+
+| Request type | Required focus | Reference section |
+|---|---|---|
+| Full pre-match forecast | all five source layers, score, failure mode | Forecast Workflow |
+| Quick first pass | compact lean, unchecked layers, update triggers | `Fast-Pass And Lineup Revision` |
+| Live update | current match state, named events, substitutions, chance quality | `Live Update Rules` |
+| Post-match review | result, process, key-event variance, model record | `Post-Match Review Template` |
+| Rules, VAR, or referee controversy | event facts, rule chain, evidence level | `VAR And Offside Review` / `Referee Controversy And Social Reaction` |
+
+Detailed routes and templates live in `references/prediction-framework.md`.
+
 ## Required Source Discipline
 
 Before forecasting, state which source layers were actually used:
@@ -27,6 +41,8 @@ Before forecasting, state which source layers were actually used:
 
 If a layer is missing, say so and reduce confidence. Never claim Sofascore, FotMob, Flashscore, WhoScored, FBref, Stake, Polymarket, or lineup data was used unless it was directly read from a public page/API or supplied by the user. Treat FBref as a delayed review and validation source, not a real-time matchday source, unless current-match data is verified.
 
+Start every non-trivial fixture-specific forecast, live update, or post-match review with an evidence snapshot: exact fixture, match start time/time zone when known, information cutoff time, and the source layers actually read. For time-sensitive sources, state the page state or timestamp rather than implying it is current. A general rules explanation needs this snapshot only when it analyzes a specific match event.
+
 If the user mentions currently open match pages, browser tabs, live match pages, Sofascore, FotMob, Flashscore, Stake, Polymarket, lineups, odds, technical stats, or post-match review, first inspect available pages/tabs when the runtime provides browser state and identify the exact match/event page. Do this before opening new pages, guessing URLs, searching the web, writing a scraper, or using an API. Choose DOM reading, screenshot reading, or API/script access only after confirming what is already available. If browser automation opens temporary pages, preserve user-opened pages and clean up only the temporary pages where the tool supports it.
 
 For a full match prediction, do not stop after reading only market odds or only schedule/context. Before producing the final forecast, make a visible attempt to check market baseline, recent performance/data, player availability/news, match-state incentives, and style matchup.
@@ -37,7 +53,7 @@ User screenshots are fallback or supplemental inputs, not required inputs. Do no
 
 If the user explicitly asks for a quick first pass, "one round" forecast, or rough forecast before deeper verification, answer immediately with a clearly provisional forecast instead of blocking on full source collection. Still label missing layers and name the lineup, market, or news triggers that would change the prediction.
 
-## Market Lookup Defaults
+## Market Lookup Routing
 
 For World Cup match odds, check dedicated market pages before generic search:
 
@@ -45,19 +61,21 @@ For World Cup match odds, check dedicated market pages before generic search:
 2. Open the Stake World Cup soccer page directly: `https://stake.com/zh/sports/soccer/international/world-cup`, and read normal 1X2 decimal odds when the fixture is visible. Confirm the active market is normal win/draw/win, not handicap, totals, advancement, or a top-page large-bet card.
 3. If Polymarket and Stake both lack readable fixture odds, use major public books, odds aggregators, or user-supplied screenshots as supplemental market input.
 
+For another international competition, start from a public page for that exact competition or fixture, then use a second public book or odds aggregator if the first source is incomplete. Do not force a non-World-Cup fixture through World Cup URLs. Record which competition page and market type were actually read.
+
 Do not conclude that market odds are unavailable from generic web search alone. Do not rely on Polymarket Gamma API team-name search as the first pass; it can return unrelated markets or miss sport/game aggregation pages. If Stake blocks access, requires heavy JavaScript, redirects away, or shows no normal 1X2 fixture odds after trying the direct World Cup page, mark Stake unavailable for that match and move on instead of retrying repeatedly. Ignore signup promos, free-bet boosts, and "50/1" style acquisition offers when setting a normal market baseline.
 
 ## Forecast Workflow
 
-1. **Check calibration state**: if prior post-match reviews or user-cited earlier sessions exist, carry forward the explicit model corrections before forecasting. Do not let a recent draw cluster cause blanket draw protection, and do not overcorrect back to paper favorites while ignoring injuries, starters, or role gaps.
+1. **Check calibration state**: only carry forward an explicit review or calibration record supplied in the current context or by the user. Do not imply access to an unstated cross-session record. Do not let a recent draw cluster cause blanket draw protection, and do not overcorrect back to paper favorites while ignoring injuries, starters, or role gaps.
 2. **Identify match state**: date/time, group or knockout round, standings or bracket path, qualification/advancement incentives, and whether draw, extra time, or penalties change each team's risk appetite.
-3. **Set market baseline**: follow the market lookup defaults above, then convert visible prices/odds into rough favorite, draw, and total-goals expectations. Note liquidity, volume, wide spreads, stale pages, missing markets, or pages that only load earlier fixtures. Use Polymarket API only when public page text cannot expose the needed market or when orderbook/bid-ask detail is specifically required.
+3. **Set market baseline**: follow the market lookup routing above, then convert visible prices/odds into rough favorite, draw, and total-goals expectations. Note liquidity, volume, wide spreads, stale pages, missing markets, or pages that only load earlier fixtures. Use Polymarket API only when public page text cannot expose the needed market or when orderbook/bid-ask detail is specifically required.
 4. **Verify recent performance**: prefer last tournament match data over friendlies, but also inspect recent five friendlies/pre-tournament matches when available. For immediate matchday reads, prefer verified Sofascore/FotMob/Flashscore data or user-supplied screenshots; use WhoScored/Sofascore event or shot-level data when available; use FBref, StatsBomb free data, and Understat mainly for delayed review, model calibration, or historical context. Check opponent quality, xG/chance quality, shots on target, big chances, saves, player ratings, minutes, and whether the scoreline was misleading.
 5. **Check player availability**: injuries, suspensions, illness, rotation, expected starters, whether key players are truly fit enough to execute their role for 60-70 minutes, and whether replacements preserve or change the team's main route to goal.
 6. **Analyze style matchup**: test how each team creates chances, prevents chances, handles pressure, progresses the ball, defends transitions, uses set pieces, and changes structure through substitutions without forcing a preferred shape or formation.
 7. **Stress-test paper favorites**: before backing a reputation-heavy or market-heavy favorite, require evidence that it can turn territory into high-quality box chances against this opponent. If recent matches show low-quality volume, weak striker/box occupation, overlapping creators, loose passing, weak rest defense, or limited second-ball pressure, cap the margin and raise draw, extra-time, and penalty branches instead of assuming automatic repair.
 8. **Account for context**: heat/humidity, travel, home/host boost, kickoff time, venue surface, altitude, referee/discipline risk, and governance or continuity signals if known. Treat climate and host effects as modifiers, not master variables. For altitude, separate stadium familiarity and crowd pressure from physiological adaptation; do not give a large altitude edge to a host if the opponent routinely plays or trains at comparable or higher altitude.
-9. **Produce prediction**: give winner/draw lean, exact score, backup score, confidence, and the single most important failure mode. For knockout matches, separate 90-minute score from advancement lean and note extra-time or penalty-shootout risk. If odds or betting markets were used, include a brief disclaimer that the analysis is not betting or financial advice.
+9. **Produce prediction**: give winner/draw lean, exact score, backup score, separate result and exact-score confidence, and the single most important failure mode. For knockout matches, also separate 90-minute score, advancement lean, and advancement confidence. If odds or betting markets were used, include a brief disclaimer that the analysis is not betting or financial advice.
 10. **Post-match review**: compare prediction with score, xG/chances, ratings, key events, substitutions, late-game control, and update the model. Do not overgeneralize from one matchday.
 
 Do not repeat a completed layer while required layers remain unchecked. For example, once market prices have been read, move to data, news, context, and style instead of re-reading the same market page unless the market data is ambiguous or stale.
@@ -78,16 +96,17 @@ Analyze team style without privileging a specific formation, build-up shape, or 
 
 Use a compact table first:
 
-| Match | Sources used | Market baseline | Data/news correction | Prediction | Confidence |
+| Match | Evidence cutoff | Sources used | Market baseline | Prediction | Result / score confidence |
 |---|---|---|---|---|---|
 
 Then add short match notes:
 
-- **Sources used**: market, data, news, context, and style-matchup layers actually used.
+- **Evidence snapshot**: exact fixture, information cutoff time, and source layers actually used.
 - **Calibration**: prior post-match lessons applied, and whether this is provisional or final based on lineup availability.
 - **Prediction**: score and backup score.
+- **Confidence**: separate result confidence from exact-score confidence; for knockout matches, add advancement confidence.
 - **Knockout note**: for knockout matches, separate 90-minute result from advancement lean, extra-time risk, and penalty-shootout risk.
-- **Cards note**: when asked for cards or discipline, give a main card count plus a reasonable range and the main red-card trigger.
+- **Cards note**: when referee or discipline evidence is sufficient, give a main card count, reasonable range, and main red-card trigger; otherwise give a qualitative discipline-risk read and state what is missing.
 - **Why**: 2-4 strongest reasons.
 - **Failure mode**: the most likely way the prediction breaks.
 - **Missing data**: important unavailable source layers.
@@ -95,36 +114,6 @@ Then add short match notes:
 
 ## Common Mistakes
 
-- Do not equate favorite price with goal margin.
-- Do not treat a famous or high-ranked favorite as having automatic knockout-stage penetration. If it has not proven stable chance creation against compact blocks, make regulation draw or narrow win a live branch.
-- Do not group all favorites together; distinguish low-quality possession favorites from teams that repeatedly create big chances, strong xG, and high-value box touches.
-- Do not label a team as a black horse only because it is outside the traditional Europe/South America elite; recent major-tournament runs, continental titles, and repeated knockout control can make it a stable strong team.
-- Do not turn confederation or region into a stereotype. South American teams may deserve higher foul/control-risk only when current tournament evidence, player roles, referee tolerance, and style matchup show repeated high-contact disruption, tactical fouls, off-ball actions, or protest management.
-- Do not treat corners, crosses, box touches, or shot count as proof of domination without checking cross quality, shots on target, big chances, xG, and xGOT.
-- Do not let momentum charts override xG, big chances, shots on target, xGOT, and substitution-driven chance quality.
-- Do not equate first-match score with true form; inspect chance quality and opponent collapse.
-- Do not treat FBref, StatsBomb free data, or Understat as real-time sources for current World Cup matches unless current-match coverage was directly verified.
-- Do not overrate friendlies over current tournament data.
-- Do not assume a returning star is fully functional; ask whether they can sprint, press, dribble, or play 60+ minutes.
-- Do not label a benched player as injured or unavailable unless injury/availability reporting confirms it; separate bench, rotation, managed minutes, and true absence.
-- Do not assume a coaching change creates instant defensive cohesion.
-- Do not treat public player criticism of federation chaos, leaks, rushed rebuilds, or lack of squad continuity as ordinary venting; it is a high-weight cohesion signal, while specific corruption or financial claims still need separate verification.
-- Do not assume a favorite will fix repeated chance-creation problems just because it has famous attackers or needs a result; require evidence from lineup, role, ball security, defensive control, or chance-quality changes.
-- Do not keep treating an underdog as only a defensive spoiler after it has shown repeatable scoring routes such as set pieces, direct play, transitions, or a target-forward outlet.
-- Do not say a team lacks quality just because it lost; check whether it created real chances.
-- Do not treat climate, opening-round caution, or a cluster of draws as a master variable.
-- Do not swing from "too conservative" straight back to paper-strength favorites when key creators, finishers, defenders, or starters are missing or limited.
-- Do not assume an eliminated team will produce an automatic pride rebound; check player buy-in, lineup intent, coaching stability, and whether governance or cohesion signals are already broken.
-- Do not treat third-place pressure or "draw is enough" as automatic low-total or preferred draw; check lineup intent, transition threat, set pieces, and market totals.
-- Do not downgrade an already-qualified favorite without checking both teams' rotation and whether the opponent has removed core scoring, progression, goalkeeper, or defensive roles.
-- Do not lump all inefficient favorites together; separate low-quality volume from high-quality under-conversion before capping margin or allowing rebound.
-- Do not apply group-stage draw, goal-difference, third-place, or "draw is enough" logic to knockout matches; separate 90-minute result from advancement.
-- Do not ignore extra time and penalties in knockout matches; check goalkeeper penalty record, taker availability, substitute depth, fatigue, and late-game control.
-- Do not treat penalty shootouts as afterthoughts for inefficient favorites. When a favorite lacks open-play chance quality, penalty and extra-time risk should affect the main forecast, not only the failure mode.
-- Do not treat predicted lineups or user screenshots as official lineups; label them as provisional and name the triggers that would change the forecast.
-- Do not convert a co-host or regional venue into full home advantage without checking travel, crowd mix, climate, stadium familiarity, and pressure.
-- Do not convert altitude into a one-way home edge without checking both teams' altitude background, domestic venues, player acclimatization, travel timing, and whether the edge is physiological or mostly crowd/stadium familiarity.
-- Do not let historical narratives or knockout baggage outweigh current execution, early pressure, home/crowd momentum, and match state after an early goal.
-- Do not call a tournament's refereeing "loose" or "strict" from one controversial match. Compare contact tolerance, dissent tolerance, dangerous-tackle enforcement, VAR intervention, foul volume, yellow-card volume, red-card triggers, and team-card skew across matches.
+Do not equate market price, reputation, possession, pressure-only data, or one scoreline with superior chance creation. Do not treat predicted lineups as official, infer an injury from a benching, stereotype a team or confederation, or apply group-stage incentives to a knockout match. For the detailed safeguards, use `references/prediction-framework.md`.
 
 For detailed weighting, confidence rules, and review templates, read `references/prediction-framework.md`.

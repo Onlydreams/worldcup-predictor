@@ -34,6 +34,8 @@ Mark uncertain facts clearly: confirmed, reported, inferred, or user-supplied.
 
 Access discipline matters as much as source quality. If a site returns 403, requires heavy JavaScript, blocks automated access, or only appears through a user screenshot, say exactly that. Do not promote a source into "used" unless the relevant match page, API output, or screenshot was actually read.
 
+For each non-trivial forecast, create a compact evidence snapshot before the prediction: exact fixture, scheduled kickoff and time zone when known, information cutoff time, source/page actually read, relevant market type, and whether each fact is confirmed, reported, inferred, or user-supplied. A source name alone is not enough for time-sensitive odds, lineups, or live statistics. Do not imply that a page was current when its timestamp, fixture identity, or market type was unclear.
+
 If the user says relevant match pages are already open, or the task concerns live data, technical stats, lineups, odds, substitutions, or post-match review from likely open pages, first enumerate or inspect the available pages/tabs and confirm the exact match/event page. Use the already-open DOM or screenshot when it is readable; choose a new page, web search, API call, or script only after confirming the page is unavailable, incomplete, or too noisy. Do not guess event URLs or write a scraper before checking what the user has already opened. If browser automation opens temporary pages, preserve user-opened pages and clean up only the temporary pages where the tool supports it.
 
 Predicted lineups from Sofascore, FotMob, other apps, or user screenshots can inform the pre-match personnel layer, but label them as predicted, not official. After reading a predicted lineup, list the specific lineup triggers that would change the forecast: main finisher starts or sits, defensive organizer returns, ball-progressor fitness, goalkeeper change, or whether a key player is fit for 60-70 minutes.
@@ -104,7 +106,7 @@ When the user explicitly asks for an immediate first pass, whole-round forecast,
 
 - Label it clearly as a rough or provisional pre-match forecast.
 - For knockout batches, still split 90-minute score, advancement lean, and extra-time or penalty risk.
-- If cards are requested, give a main card count plus range even in the fast pass, but lower confidence when referee data is missing.
+- If cards are requested and referee or comparable discipline data is available, give a main card count plus range. Otherwise give a qualitative discipline-risk read, name the missing referee data, and do not invent a precise card count.
 - Preserve the source-layer structure: market, data, news, context, and style. Mark unchecked layers rather than pretending they were read.
 - Name the triggers for a later update: official lineup, key role starting or sitting, market move, injury/suspension report, referee assignment, weather, or venue shift.
 - If a later lineup, odds screenshot, or live page update arrives, update the affected layer first. Do not rerun every layer unless the stale layer could change the conclusion.
@@ -144,6 +146,8 @@ Before knockout forecasts, run a compact tournament-to-date review instead of so
 
 ## Calibration Discipline
 
+- Calibration is context-bound. Reuse only an explicit post-match review or calibration ledger supplied in the current context or by the user; never claim an unstated cross-session memory, record, or model update.
+- For iterative tracking, keep a compact record with the match, forecast timestamp, 90-minute lean, exact-score confidence, result confidence, market baseline, source completeness, outcome, process verdict, and error category. If normalized 1X2 probabilities were explicitly produced, record them and calculate a Brier score or comparable metric; do not manufacture probabilities solely to score a past forecast.
 - A complete forecast cannot be market-only or context-only. After a market page has been read, preserve that market baseline and move on to recent performance/data, player availability/news, match-state incentives, and style matchup. Do not re-read the same market source unless the captured price is ambiguous, stale, or incomplete.
 - If Sofascore/FotMob/Flashscore/xG, lineup, or injury data cannot be read, say exactly which layer is missing. Missing advanced event data mostly caps confidence in exact score, margin, and chance-quality claims; missing key availability or lineup facts can cap confidence in the winner lean. Do not silently replace missing data with market prices.
 - Carry forward explicit lessons from recent post-match reviews before making a new forecast.
@@ -295,19 +299,22 @@ Separate confidence in result from confidence in exact score. Exact score is usu
 
 For knockout matches, separate confidence in regulation result from confidence in advancement. Penalty-shootout outcomes are usually low-confidence unless there is strong goalkeeper, taker, or fatigue evidence.
 
+Use numeric probabilities only when the evidence and calculation support them. Otherwise use the labels above and do not imply quantitative calibration.
+
 ## Standard Answer Template
 
 ```markdown
-| Match | Sources used | Market | Data/personnel correction | Prediction | Confidence |
-|---|---|---|---|---|---|
-| A vs B | Market, news, matchup | A small favorite | B has strong low block; A missing creator | A 1-0 | Medium |
+| Match | Evidence cutoff | Sources used | Market | Data/personnel correction | Prediction | Result / score confidence |
+|---|---|---|---|---|---|---|
+| A vs B | 12:00 UTC; lineups pending | Market, news, matchup | A small favorite | B has strong low block; A missing creator | A 1-0 | Medium / Low |
 
 **A vs B**
-Sources used: Polymarket public page or Stake public odds page; team news report; style-matchup notes. Data layer unavailable.
+Evidence snapshot: exact fixture and kickoff; information cutoff; named market page and market type; team news report; style-matchup notes. Data layer unavailable.
 Calibration: Prior review showed overcorrecting to draws is risky, but this remains provisional because final lineups are unavailable.
 Prediction: A 1-0; backup 1-1.
-Knockout note: if applicable, 90-minute score; advancement lean; extra-time or penalty-shootout risk.
-Cards note: if requested, main card count; reasonable range; red-card trigger.
+Confidence: result medium; exact score low; if applicable, advancement medium.
+Knockout note: if applicable, 90-minute score; advancement lean and confidence; extra-time or penalty-shootout risk.
+Cards note: if requested and referee data is sufficient, main card count; reasonable range; red-card trigger. Otherwise, qualitative discipline risk and missing data.
 Why: [market], [data], [availability], [style matchup].
 Failure mode: A cannot turn possession into box chances, or B scores first from transition/set piece.
 Missing data: Sofascore unavailable / lineup not confirmed / weather not checked.
@@ -332,6 +339,8 @@ Verdict category:
 Model update:
 - Increase/decrease weight for ...
 - Note whether this was a paper-strength error, over-draw-protection error, lineup/fitness miss, market miss, or finishing-variance miss.
+
+Calibration record: match; forecast timestamp; 90-minute lean; result/exact-score confidence; market baseline; source completeness; outcome; process verdict; error category. Add 1X2 probabilities and Brier score only if probabilities were explicitly forecast.
 ```
 
 Review against process and chance quality, not only score. If a prediction loses to an extreme goalkeeper performance or red card, record it differently from a wrong style-matchup read.

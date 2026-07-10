@@ -10,12 +10,14 @@ It guides an AI agent to combine market baseline, verified match data, team news
 
 - Builds match forecasts from layered evidence: market, data, news, context, and style matchup.
 - Requires the agent to state which source layers were actually used.
+- Routes full forecasts, quick first passes, live updates, post-match reviews, and rules/controversy analysis to the appropriate evidence workflow.
 - Uses public odds and betting-market pages as baseline inputs, not final answers.
+- Records an evidence cutoff and source state for time-sensitive odds, lineups, and live statistics.
 - Checks player availability, role fitness, style matchup, group or knockout match-state incentives, and environmental factors.
 - Supports knockout-specific reads, including 90-minute vs advancement forecasts, extra time, penalties, and bench depth.
 - Supports card and discipline forecasts with referee profile, matchup fouls, game state, and reasonable card-count ranges.
-- Produces compact predictions with score, backup score, confidence, failure mode, and missing-data notes.
-- Supports post-match review to update future predictions.
+- Produces compact predictions with score, backup score, separate result and exact-score confidence, failure mode, and missing-data notes.
+- Supports context-bound post-match review and optional calibration records without inventing cross-session memory.
 
 ## Disclaimer
 
