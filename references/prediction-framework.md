@@ -175,6 +175,7 @@ Before knockout forecasts, run a compact tournament-to-date review instead of so
 
 ## Live Update Rules
 
+- At halftime or any requested live checkpoint, reconcile a compact event ledger before interpreting the technical statistics: current score and scorers, cards, penalties or VAR decisions, injuries, substitutions, and stoppage time. Cross-check a readable event log against the lineup when possible, label user-observed events as user-supplied, and state when the reason for a substitution is unknown. Do not describe a change as tactical when the event record marks an injury substitution.
 - After an early underdog goal, do not overreact to score alone. Check whether the favorite is creating real chances or only territorial pressure, and whether the underdog still has a second-goal route.
 - At halftime, update from xG, big chances, shots on target, substitution needs, and whether the favorite has obvious bench fixes. Do not anchor to pre-match market strength if current chance quality contradicts it.
 - Around 60 minutes, substitutions become a major model signal. Upgrade or downgrade only when they change chance quality: crossing quality, one-v-one threat, central occupation, pressing, second-ball recovery, or rest-defense exposure.
@@ -238,6 +239,8 @@ Do not treat a regional or co-host venue as full home advantage by default.
 ## Style Matchup Diagnostics
 
 Do not force every team into a preferred formation, build-up shape, or possession model. Evaluate whether the team's actual approach creates and prevents high-quality chances.
+
+When a possession team counterpresses effectively after losing the ball, evaluate its defensive value through the transition chances it removes from the opponent, not only through its own possession share or attacking output. Check whether the opponent can find a first and second forward pass, whether midfield receivers can turn, and whether recoveries lead to progression or immediate turnovers and back-passes. If a transition-dependent team repeatedly loses its progression outlets and cannot launch its preferred attacks, treat that as a structural style neutralization rather than reducing the diagnosis to an individual attacker having a poor game.
 
 ### Positive indicators
 
