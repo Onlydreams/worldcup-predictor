@@ -170,6 +170,7 @@ Before knockout forecasts, run a compact tournament-to-date review instead of so
 - If final lineups are unavailable, label the forecast provisional and name the specific lineup triggers that would move the score or winner lean.
 - A doubtful player who starts is not automatically fit for a full match. Keep a minutes/role-fitness branch after lineup confirmation; if the player leaves at half-time or early, record managed minutes or fitness uncertainty unless a reliable source confirms the reason. Do not retrospectively label the predicted XI simply right or wrong.
 - In post-match review, classify key-event variance separately from model error: early red card, goalkeeper error, VAR reversal, penalty save, injury substitution, or extreme finishing. Explain whether the pre-match read was wrong before the event, or whether the event changed the match state.
+- Separate a high-total distribution miss from extreme finishing variance. If the pre-match matchup, rotation, and incentives supported an open game but the forecast stayed in a normal low-to-moderate scoring range, record a total-baseline or tail-risk miss even when the final score also ran far above xG or xGOT. Raise the expected total and widen the score distribution only as far as the repeatable evidence supports; do not calibrate all the way to one outlier scoreline.
 - In knockout reviews, score the 90-minute forecast before judging the final extra-time or shootout result. Treat extra-time goals, a red card that changes the late opportunity set, and post-90-minute VAR decisions as separate branches; they can validate an advancement lean without proving the regulation-margin call.
 - When a favorite generates strong xG, big chances, shots on target, and territorial pressure but concedes through low-frequency routes, keep the chance-creation process mostly intact while updating the conceded-goal routes. The correction may be "underdog scoring route was underweighted," not "favorite was overrated."
 
@@ -280,6 +281,14 @@ When a possession team counterpresses effectively after losing the ball, evaluat
 - Already qualified is not enough to downgrade a favorite. Check whether the opponent is rotating core roles, whether the favorite's replacements preserve chance creation, and whether goal difference, group position, or momentum still matters.
 - Team already eliminated may either rotate, collapse, or play freer. Do not assume a pride rebound unless lineup intent, player buy-in, coaching stability, and cohesion signals support it.
 - Path incentives matter only if teams can realistically control placement; do not overweight speculative bracket choices early.
+
+### Third-Place Playoff
+
+- Do not equate reduced title or elimination pressure with low intensity or a low total. Check whether both teams can play more freely, whether an early concession has little downside beyond the placement result, and whether either side still has selection, individual-award, or tournament-record incentives.
+- When both teams retain elite creators, finishers, or transition outlets but rotation removes goalkeepers, central defenders, midfield screens, press leaders, or defensive organizers, raise both the expected goal total and the high-scoring tail. Individual attacking quality can survive rotation more easily than coordinated defensive spacing and communication.
+- Weight rotation by role and spine continuity, not by headcount. Compare the remaining goalkeeper-center-back-midfield protection chain with the available creators, finishers, transition runners, set-piece threats, and attacking bench; treat asymmetric damage to one defensive spine as a margin signal as well as a total-goals signal.
+- After an early goal, reassess for a feedback loop: the trailing side may open up sooner, while a leading side with credible transition outlets can keep creating high-value chances. In this setup, do not merely move a conservative scoreline up by one goal; widen the distribution and keep a clearly labeled high-total branch while lowering exact-score confidence.
+- Do not force an open-game adjustment when key attackers are rested, fatigue or weather suppresses tempo, both coaches preserve compact structures, or recent data and market totals show weak chance creation. Third-place status is a conditional modifier, not a standalone over-goals rule.
 
 ### Knockout Stage
 
