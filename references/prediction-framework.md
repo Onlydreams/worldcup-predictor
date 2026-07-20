@@ -159,6 +159,8 @@ Before knockout forecasts, run a compact tournament-to-date review instead of so
 - After a favored team has failed to score from open play or produced repeated low-quality volume, cap its margin and raise draw risk until there is concrete evidence of chance-creation repair.
 - After a favorite advances while looking disjointed, downgrade future regulation-win confidence even if aggregate xG was strong. Treat loose passing, poor defensive concentration, misfiring key roles, and too many opponent shots on target as form warnings, especially if the opponent has not been an elite stress test.
 - When a narrow score is driven by an outstanding goalkeeper performance against clear xG, big chances, and shots-on-target dominance, record it as finishing or goalkeeper variance rather than an attacking-process failure.
+- In low-score reviews, distinguish a balanced low-event match from one-sided suppression hidden by poor finishing or an exceptional goalkeeper. A correct low-total or exact-score call is only a partial process hit when the predicted game shape was cautious or balanced but the actual chance creation was heavily one-sided.
+- Reconcile cross-source counting differences before grading the forecast. When shots on target, saves, goals, cards, or xG disagree, keep one provider's internally consistent totals or name each provider and counting rule; do not combine incompatible totals into a synthetic match record.
 - After post-match reviews show that corners, box touches, or territorial pressure did not create goals, reduce the weight of pressure-only indicators until they are paired with xG, big chances, shots on target, xGOT, or forced saves.
 - After a favorite controls possession or wins xG but advances narrowly through a penalty, goalkeeper performance, or poor finishing from open play, keep the favorite's advancement quality separate from its regulation-margin quality. Do not automatically upgrade the next forecast to a comfortable win.
 - Do not let historical baggage, past-round narratives, or national-team stereotypes outweigh current execution. Treat them as psychological modifiers only, and reweight quickly after early pressing success, first-goal match-state change, crowd momentum, or visible duel advantage.
@@ -170,8 +172,10 @@ Before knockout forecasts, run a compact tournament-to-date review instead of so
 - If final lineups are unavailable, label the forecast provisional and name the specific lineup triggers that would move the score or winner lean.
 - A doubtful player who starts is not automatically fit for a full match. Keep a minutes/role-fitness branch after lineup confirmation; if the player leaves at half-time or early, record managed minutes or fitness uncertainty unless a reliable source confirms the reason. Do not retrospectively label the predicted XI simply right or wrong.
 - In post-match review, classify key-event variance separately from model error: early red card, goalkeeper error, VAR reversal, penalty save, injury substitution, or extreme finishing. Explain whether the pre-match read was wrong before the event, or whether the event changed the match state.
+- Before attributing dominance or the result to a red card, compare the pre-card score, shots, shots on target, xG, territory, and chance pattern with the post-card phase. Treat the dismissal as an amplifier rather than the root cause when the match was already structurally one-sided.
 - Separate a high-total distribution miss from extreme finishing variance. If the pre-match matchup, rotation, and incentives supported an open game but the forecast stayed in a normal low-to-moderate scoring range, record a total-baseline or tail-risk miss even when the final score also ran far above xG or xGOT. Raise the expected total and widen the score distribution only as far as the repeatable evidence supports; do not calibrate all the way to one outlier scoreline.
 - In knockout reviews, score the 90-minute forecast before judging the final extra-time or shootout result. Treat extra-time goals, a red card that changes the late opportunity set, and post-90-minute VAR decisions as separate branches; they can validate an advancement lean without proving the regulation-margin call.
+- Grade exact scores by phase. If the final score after extra time matches the forecast but the 90-minute score does not, record a final-score hit and a regulation exact-score miss rather than a full exact-score hit.
 - When a favorite generates strong xG, big chances, shots on target, and territorial pressure but concedes through low-frequency routes, keep the chance-creation process mostly intact while updating the conceded-goal routes. The correction may be "underdog scoring route was underweighted," not "favorite was overrated."
 
 ## Live Update Rules
@@ -215,6 +219,7 @@ When asked about post-match referee discourse, social-media complaints, or claim
 
 Use a range, not false precision. A card forecast should include a main count, a reasonable range, and the main red-card trigger.
 
+- State the counting convention before forecasting or reviewing cards. Separate single-yellow player totals, every yellow-card event, second-yellow dismissals, straight red cards, and technical-area cards; providers may display a player sent off for two cautions under red cards while excluding those cautions from the yellow total.
 - Start with referee profile when available: yellow-card average, red-card frequency, penalty frequency, tolerance for dissent, tactical fouls, and advantage play.
 - Separate tournament-wide referee environment from single-match referee behavior. Compare multiple matches before saying the tournament is loose or strict: contact tolerance, dissent tolerance, dangerous-tackle enforcement, VAR intervention, foul volume, yellow-card volume, red-card triggers, and whether cards skew toward the trailing or protesting team.
 - Adjust for knockout intensity, rivalry, elimination pressure, and whether one team is likely to defend long stretches or make repeated transition-stopping fouls.
@@ -293,6 +298,8 @@ When a possession team counterpresses effectively after losing the ball, evaluat
 ### Knockout Stage
 
 - Separate 90-minute prediction from advancement prediction. A team can be more likely to advance without being clearly likely to win in regulation.
+- Keep decision-stage probabilities unambiguous: `reach extra time` includes matches later settled in extra time or on penalties, while `decided in extra time` and `reach penalties` are separate branches. If outputting mutually exclusive stages, label them as `90-minute decision / extra-time decision / shootout decision`.
+- For finals, use recent final-specific extra-time frequency only as a bounded context prior alongside current 90-minute draw prices, styles, goalkeeper quality, and attacking intent. Do not let a small historical sample override the current matchup, but do not apply a generic knockout-stage prior without checking the final-specific pattern.
 - Do not apply group-stage third-place, goal-difference, or "draw is enough" logic to knockout matches. A draw after 90 minutes means extra time and possibly penalties, not a final table outcome.
 - Weak or near-peer teams may rationally aim to reach extra time or penalties if their open-play chance creation is limited but their goalkeeper, penalty takers, defensive block, or fatigue profile is competitive.
 - Favorites may avoid high-risk chasing while level, especially early, but should become more aggressive if extra time hurts them more than the opponent or if their bench can change chance creation.
@@ -360,7 +367,7 @@ Model update:
 - Increase/decrease weight for ...
 - Note whether this was a paper-strength error, over-draw-protection error, lineup/fitness miss, market miss, or finishing-variance miss.
 
-Calibration record: match; forecast timestamp; 90-minute lean; result/exact-score confidence; market baseline; source completeness; outcome; process verdict; error category. Add 1X2 probabilities and Brier score only if probabilities were explicitly forecast.
+Calibration record: match; forecast timestamp; 90-minute lean; regulation exact-score verdict; final/advancement verdict; decision-stage verdict; result/exact-score confidence; market baseline; source completeness; process verdict; error category. Add 1X2 probabilities and Brier score only if probabilities were explicitly forecast.
 ```
 
 Review against process and chance quality, not only score. If a prediction loses to an extreme goalkeeper performance or red card, record it differently from a wrong style-matchup read.
